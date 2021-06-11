@@ -1,0 +1,125 @@
+/* Header */
+.header{
+    background-color: #F3E9F1;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    height: 100px;
+}
+
+.return-icon{
+    margin-left: 30px; 
+    font-size: 30px;
+}
+
+.cart-icon{
+    margin-right: 30px; 
+    font-size: 30px;
+    background: linear-gradient(to right bottom, #ea7c37, #f06c53, #ee626e, #e25e87, #ce619d, #c660a9, #ba61b6, #aa63c2, #a860d0, #a35dde, #9b5bee, #8f5bfe); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} 
+
+.display-none{
+    display: none;
+}
+
+/* Header : icone retour */ 
+
+
+/* PAGE D'ACCUEIL : vues produits sous forme de cartes cliquables */
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+@media screen and (min-width: 992px){
+    .container{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+.products{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.products-list{
+    display: grid; 
+    grid-template-columns: 1fr;
+}
+
+/* Affichage vues produits Tablette et Desktop */
+@media screen and (min-width: 600px){
+    .products-list{
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .products-list{
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 10px;
+    }
+}
+
+
+/* Carte produit */
+.product-card{
+    background-color: #F3E9F1;
+    border-radius: 20px;
+    box-shadow: 5px 5px 8px grey;
+    transform: scale(1);
+    transition: all 700ms;
+}
+
+.product-card:hover{
+    transform: scale(1.05);
+    box-shadow: 5px 5px 6px grey;
+}
+
+.card__img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+.card__legend{
+    margin-left: 20px;
+    padding-top: 10px; 
+    padding-bottom: 10px;  
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start;
+}
+
+.card__name{
+    margin: 0;
+}
+
+.card__price{
+    margin: 0;
+}
+
+/* Style des liens et des boutons */ 
+a{
+    text-decoration: none;
+    color: black;
+}
