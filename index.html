@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Orinoco | Vente de caméras vintage</title>
+        <meta name="description" content="Orinoco, e-commerce spécialisé">
+        <script src="https://kit.fontawesome.com/56e0717261.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" href="images/logo-orinoco.ico"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <script src="js/index.js" defer></script>
+    </head>
+    <body>
+       <header>
+           <!-- Header avec logo, bouton de retour en page d'accueil à gauche 
+            (caché sur la page d'accueil) et icone panier à droite -->
+            <div class="header">
+                <div class="return">
+                   <a href="../index.html">
+                       <i class="display-none fas fa-arrow-left"></i>
+                   </a>
+                </div>
+                <img class="logo" src="images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"/>
+                <div class="shopping-cart">
+                   <i class="cart-icon fas fa-shopping-cart"></i>
+                </div>
+            </div>
+       </header>
+       <main id="main" class="container">
+           <!-- Produits disponibles présentés sous forme de cartes cliquables -->
+           <h1>Orinoco, e-commerce spécialisé</h1>
+           <section class="products">
+               <h2>Découvrez notre gamme Oricamera d'appareils photo vintage.</h2>
+               <div id="productList" class="products-list">
+                   <template id="templateProduct">
+                       <a id="card__link">
+                            <figure class="product-card">
+                                <div>
+                                    <img id="card__img" class="card__img" src="" alt="">
+                                </div>
+                                <figcaption class="card__legend">
+                                    <h3 id="card__name" class="card__name">Name</h3>
+                                    <p id="card__price" class="card__price">Price</p>
+                                </figcaption>
+                            </figure>
+                       </a> 
+                    </template>
+               </div>
+           </section>
+       </main>
+       <footer>
+           <!-- Footer identique sur toutes les pages : A propos, contact et 
+            liens vers les autres sites Orinoco -->
+       </footer>
+    </body>
+</html>
