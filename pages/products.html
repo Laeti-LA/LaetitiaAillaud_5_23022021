@@ -8,7 +8,7 @@
         <script src="https://kit.fontawesome.com/56e0717261.js" crossorigin="anonymous"></script>
         <link rel="icon" type="image/png" href="../images/logo-orinoco.ico"/>
         <link rel="stylesheet" href="../css/style.css"/>
-        <script src="../js/index.js" defer></script>
+        <script src="../js/product.js" defer></script>
     </head>
     <body>
         <header>
@@ -20,13 +20,28 @@
                         <i class="return-icon fas fa-arrow-left"></i>
                     </a>
                  </div>
-                 <img class="logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"/>
+                 <img class="logo" src="../images/" alt="Logo de la marque Orinoco"/>
                  <div class="shopping-cart">
                     <i class="cart-icon fas fa-shopping-cart"></i>
                  </div>
              </div>
         </header>
-        <main></main>
+        <main>
+            <h1 class="product__title" id="product__title"></h1>
+            <section>
+                <div>
+                    <img class="product__img" id="product__img">
+                </div>
+                <div>
+                    <div>
+                        <h2 id="product__name" class="product__name"></h2>
+                        <p id="product__price"></p>
+                    </div>
+                    <p id="product__id"></p>
+                    <p id="product__description"></p>
+                </div>
+            </section>
+        </main>
         <footer>
             <!-- Footer identique sur toutes les pages : A propos, contact et 
              liens vers les autres sites Orinoco -->
