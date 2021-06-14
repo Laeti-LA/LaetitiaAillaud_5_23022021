@@ -20,25 +20,49 @@
                         <i class="return-icon fas fa-arrow-left"></i>
                     </a>
                  </div>
-                 <img class="logo" src="../images/" alt="Logo de la marque Orinoco"/>
+                 <img class="logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"/>
                  <div class="shopping-cart">
                     <i class="cart-icon fas fa-shopping-cart"></i>
                  </div>
              </div>
         </header>
-        <main>
-            <h1 class="product__title" id="product__title"></h1>
-            <section>
+        <main class="main-product container" id="main-product">
+            <h1 class="product__title" id="product__title">Titre</h1>
+            <section class="product-section">
                 <div>
                     <img class="product__img" id="product__img">
                 </div>
                 <div>
-                    <div>
-                        <h2 id="product__name" class="product__name"></h2>
-                        <p id="product__price"></p>
+                    <div class="product__details">
+                        <div class="product-top">
+                            <h2 id="product__name" class="product__name bold">Name</h2>
+                            <p id="product__price" class="bold">Price</p>
+                        </div>
+                        <p id="product__id">Id</p>
+                        <p id="product__description">Description</p>
                     </div>
-                    <p id="product__id"></p>
-                    <p id="product__description"></p>
+                    <div class="purchase__options">
+                        <label id="product__option">
+                            <select id="product__option--selector">
+                                <option></option>
+                                <option></option>
+                            </select>
+                        </label>
+                        <label id="product__quantity">
+                            <select id="product__quantity--selector">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </label>
+                    </div>
                 </div>
             </section>
         </main>
