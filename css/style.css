@@ -1,3 +1,9 @@
+body{
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+}
+
 /* Header */
 .header{
     background-color: #F3E9F1;
@@ -7,6 +13,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 3px 5px grey;
 }
 
 .logo{
@@ -23,7 +30,6 @@
 .display-none{
     display: none;
 }
-
 
 .cart-icon{
     margin-right: 30px; 
@@ -52,6 +58,11 @@
     }
 }
 
+h1{
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
 .products{
     display: flex;
     flex-direction: column;
@@ -62,6 +73,7 @@
 .products-list{
     display: grid; 
     grid-template-columns: 1fr;
+    margin-top: 20px;
 }
 
 /* Affichage vues produits Tablette et Desktop */
@@ -131,11 +143,6 @@ a{
     font-weight: bold;
 }
 
-.product__title{
-    margin-top: 70px;
-    margin-bottom: 70px;
-}
-
 /* Disposition image et description */
 .product-section{
     display: flex;
@@ -150,7 +157,7 @@ a{
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
-        column-gap: 20px;
+        column-gap: 30px;
     }
 }
 
@@ -159,7 +166,27 @@ a{
 } 
 
 .product__container{
-    width: 50%;
+    width: 75%;
 }
 
+@media screen and (min-width: 992px){
+    .product__container{
+        width: 50%;
+    }
+}
 
+/* Personnalisation : options et quantité */
+.purchase__product--options{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: flex-start;
+}
+
+.purchase__options{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; 
+    align-items: center;
+    column-gap: 20px;
+}

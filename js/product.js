@@ -37,4 +37,10 @@ function displayProductInfo(productData) {
     document.getElementById("product__price").textContent = productData.price/100 + ".00€" 
     //Description du produit
     document.getElementById("product__description").textContent = productData.description 
+    //Options de personnalisation
+    document.getElementById("product__option--one").textContent = productData.lenses[0]
+    document.getElementById("product__option--two").textContent = productData.lenses[1]
+    document.getElementById("product__option--three").textContent = productData.lenses[2]
+    
 }
+
