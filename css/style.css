@@ -137,6 +137,12 @@ a{
     color: black;
 }
 
+button{
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+
 /* PAGE PRODUIT */ 
 
 .bold{
@@ -166,7 +172,7 @@ a{
 } 
 
 .product__container{
-    width: 75%;
+    max-width: 400px;
 }
 
 @media screen and (min-width: 992px){
@@ -189,4 +195,24 @@ a{
     justify-content: flex-start; 
     align-items: center;
     column-gap: 20px;
+}
+
+/* Bouton ajout au panier */ 
+.product__button{
+    margin-top: 30px; 
+    margin-bottom: 80px;
+    height: 50px; 
+    width: 200px; 
+    border-radius: 25px;
+    color: white;
+    font-size: 20px;
+    background: linear-gradient(to right bottom, #ea7c37, #f06c53, #ee626e, #e25e87, #ce619d, #c660a9, #ba61b6, #aa63c2, #a860d0, #a35dde, #9b5bee, #8f5bfe); 
+    box-shadow: 2px 3px 5px grey; 
+    transform: scale(1);
+    transition: all 400ms;
+}
+
+.product__button:hover{
+    box-shadow: 3px 5px 5px grey; 
+    transform: scale(1.1);
 }
