@@ -26,21 +26,20 @@ function getProductData(productId) {
 // Fonction pour afficher les infos du produit 
 function displayProductInfo(productData) {
     //Titre de la page (Modèle + Nom du produit)
-    document.getElementById("product__title").textContent = "Modèle " + productData.name 
+    document.getElementById("product__title").textContent = "Modèle " + productData.name;
     //Référence du produit
-    document.getElementById("product__id").textContent = "Réf. : " + productData._id 
+    document.getElementById("product__id").textContent = "Réf. : " + productData._id;
     //Adresse de l'image du produit
-    document.getElementById("product__img").src = productData.imageUrl 
+    document.getElementById("product__img").src = productData.imageUrl;
     //Nom du produit
-    document.getElementById("product__name").textContent = productData.name 
+    document.getElementById("product__name").textContent = productData.name; 
     //Prix du produit (à transformer en nombre/devise!!!)
-    document.getElementById("product__price").textContent = productData.price/100 + ".00€" 
+    document.getElementById("product__price").textContent = productData.price/100 + ".00€";
     //Description du produit
-    document.getElementById("product__description").textContent = productData.description 
+    document.getElementById("product__description").textContent = productData.description;
     //Options de personnalisation
-    document.getElementById("product__option--one").textContent = productData.lenses[0]
-    document.getElementById("product__option--two").textContent = productData.lenses[1]
-    document.getElementById("product__option--three").textContent = productData.lenses[2]
-    
+    document.getElementById("product__option--one").textContent = productData.lenses[0];
+    document.getElementById("product__option--two").textContent = productData.lenses[1];
+    document.getElementById("product__option--three").textContent = productData.lenses[2];
 }
 

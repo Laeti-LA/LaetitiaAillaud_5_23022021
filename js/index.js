@@ -7,7 +7,7 @@ async function main() {
     }
 }
 
-// Fonction pour récupérer les produits : 
+// Fonction pour récupérer les produits
 function getProducts() {
     return fetch("http://localhost:3000/api/cameras")
         .then(function(httpBodyResponse) {
@@ -21,19 +21,35 @@ function getProducts() {
         })      
 }
 
-// Fonction pour afficher les infos des produits : 
+// Fonction pour afficher les infos des produits 
 function displayProduct(product) {
-    const templateElt = document.getElementById("templateProduct")
-    const cloneElt = document.importNode(templateElt.content, true) 
+    let productLink = document.createElement("a")
+    let productCard = document.createElement("figure")
+    let productCardTop = document.createElement("div")
+    let productImg = document.createElement("img")
+    let productCardLegend = document.createElement("figcaption")
+    let productName = document.createElement("h3")
+    let productPrice = document.createElement("p")
 
-    //URL de la fiche produit correspondante (doit contenir l'id après un "?" pour récupérer et afficher les infos dans la page produit)
-    cloneElt.getElementById("card__link").href = `pages/products.html?id=${product._id}` 
-    //Adresse de l'image du produit
-    cloneElt.getElementById("card__img").src = product.imageUrl 
-    //Nom du produit
-    cloneElt.getElementById("card__name").textContent = product.name 
-    //Prix du produit 
-    cloneElt.getElementById("card__price").textContent = product.price/100 + ".00€" //Prix du produit
+    productLink.setAttribute("class", "card__link")
+    productLink.setAttribute("href", "pages/products.html?id=" + product._id)
+    productCard.setAttribute("class", "product-card")
+    productCardTop.setAttribute("class", "card__top")
+    productImg.setAttribute("class", "card__img")
+    productImg.setAttribute("src", product.imageUrl)
+    productImg.setAttribute("alt", "photo de " + product.name)
+    productCardLegend.setAttribute("class", "card__legend")
+    productName.setAttribute("class", "card__name")
+    productPrice.setAttribute("class", "card__price")
 
-    document.getElementById("productList").appendChild(cloneElt)
+    document.getElementById("productList").appendChild(productLink)
+    productLink.appendChild(productCard)
+    productCard.appendChild(productCardTop)
+    productCardTop.appendChild(productImg)
+    productCard.appendChild(productCardLegend)
+    productCardLegend.appendChild(productName)
+    productCardLegend.appendChild(productPrice)
+
+    productName.textContent = product.name
+    productPrice.textContent = product.price/100 + ".00€" 
 }
