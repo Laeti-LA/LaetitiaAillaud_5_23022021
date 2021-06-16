@@ -1,9 +1,9 @@
 main() // Main function, dès le chargement de la page 
 async function main() {
-    const products = await getProducts() //Récupération des produits 
+    const products = await getProducts() //Etape 1 : récupérer les données des produits 
 
-    for (product of products) { //Boucle pour afficher autant de produits qu'il y en a dans l'API
-        displayProduct(product) //Affichage des produits 
+    for (product of products) { //Etape 2 : afficher autant de produits qu'il y en a dans l'API (avec une boucle)
+        displayProduct(product) 
     }
 }
 
@@ -17,12 +17,13 @@ function getProducts() {
             return products
         })
         .catch(function(error) {
-            alert(error)
+            alert("Oups... Something went wrong")
         })      
 }
 
 // Fonction pour afficher les infos des produits 
 function displayProduct(product) {
+    // Structure HTML
     let productLink = document.createElement("a")
     let productCard = document.createElement("figure")
     let productCardTop = document.createElement("div")
@@ -31,6 +32,7 @@ function displayProduct(product) {
     let productName = document.createElement("h3")
     let productPrice = document.createElement("p")
 
+    // Attributs des éléments HTML
     productLink.setAttribute("class", "card__link")
     productLink.setAttribute("href", "pages/products.html?id=" + product._id)
     productCard.setAttribute("class", "product-card")
@@ -42,6 +44,7 @@ function displayProduct(product) {
     productName.setAttribute("class", "card__name")
     productPrice.setAttribute("class", "card__price")
 
+    // Hierarchie des éléments HTML
     document.getElementById("productList").appendChild(productLink)
     productLink.appendChild(productCard)
     productCard.appendChild(productCardTop)
@@ -50,6 +53,7 @@ function displayProduct(product) {
     productCardLegend.appendChild(productName)
     productCardLegend.appendChild(productPrice)
 
+    // Ajout de contenu texte selon données récupérées 
     productName.textContent = product.name
     productPrice.textContent = product.price/100 + ".00€" 
 }
