@@ -169,6 +169,7 @@ button{
 
 .product__img{
     height: 300px;
+    box-shadow: 2px 3px 5px grey;
 } 
 
 .product__container{
