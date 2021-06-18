@@ -97,11 +97,19 @@ function displayProductInfo(productData) {
         
         let cartProduct = JSON.parse(localStorage.getItem("cart"));
         // Si des produits sont déjà présents dans le panier, tableau déjà créé et donc juste ajout (push) d'un nouvel objet productToAdd
-        if(cartProduct) {
+        const addToLocalStorage = () => {
             cartProduct.push(productToAdd);
             localStorage.setItem("cart", JSON.stringify(cartProduct));
-            // Affichage d'une popup "produit ajouté au panier"
+        }
+
+        const popUpProductAddedToCart = () => {
             document.getElementById("popupContainer").style.display = "flex";
+        }
+        
+        if(cartProduct) {
+            addToLocalStorage();
+            // Affichage d'une popup "produit ajouté au panier"
+            popUpProductAddedToCart();
             /* TO DO!!! Ajouter un if/else selon que l'article déjà présent a la même id 
             ou pas pour changer uniquement la quantité */
 
@@ -109,14 +117,11 @@ function displayProductInfo(productData) {
         } else {
             // Création d'un tableau (vide) et ajout (push) d'un nouvel objet productToAdd
             cartProduct = [];
-            cartProduct.push(productToAdd);
-            localStorage.setItem("cart", JSON.stringify(cartProduct));
-            document.getElementById("popupContainer").style.display = "flex";
+            addToLocalStorage();
+            popUpProductAddedToCart();
         }
 
-        
-
-})
+    })
 
 }
 
