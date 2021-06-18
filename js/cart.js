@@ -33,23 +33,38 @@ if(cartProduct === null) {
         deleteIcon.className = "fas fa-times";
         productToPurchase.appendChild(deleteIcon);
 
+        let productToPurchaseImg = document.createElement("img");
+        productToPurchaseImg.className = "cartProduct__img";
+        productToPurchaseImg.src = productAdded.product_img;
+        productToPurchase.appendChild(productToPurchaseImg);
+
         let productToPurchaseName = document.createElement("p");
-        productToPurchaseName.className = "product__name"
+        productToPurchaseName.className = "cartProduct__name"
         productToPurchaseName.textContent = productAdded.product_name;
         productToPurchase.appendChild(productToPurchaseName);
 
         let productToPurchasePrice = document.createElement("p");
-        productToPurchasePrice.className = "product__price"
+        productToPurchasePrice.className = "cartProduct__price"
         productToPurchasePrice.textContent = productAdded.product_price + ".00€";
         productToPurchase.appendChild(productToPurchasePrice);
 
+        let qtyMinus = document.createElement("p");
+        qtyMinus.className = "qty__minus"
+        qtyMinus.textContent = "-";
+        productToPurchase.appendChild(qtyMinus);
+
         let productToPurchaseQty = document.createElement("p");
-        productToPurchaseQty.className = "product__newPrice"
+        productToPurchaseQty.className = "cartProduct__qty";
         productToPurchaseQty.textContent = productAdded.product_qty;
         productToPurchase.appendChild(productToPurchaseQty);
 
+        let qtyPlus = document.createElement("p");
+        qtyPlus.className = "qty__plus"
+        qtyPlus.textContent = "+";
+        productToPurchase.appendChild(qtyPlus);
+
         let productToPurchaseNewPrice = document.createElement("p");
-        productToPurchaseNewPrice.className = "product__newPrice"
+        productToPurchaseNewPrice.className = "cartProduct__newPrice"
         productToPurchaseNewPrice.textContent = productAdded.product_newPrice + ".00€";
         productToPurchase.appendChild(productToPurchaseNewPrice);
     } 

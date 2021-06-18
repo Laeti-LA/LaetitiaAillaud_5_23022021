@@ -88,6 +88,7 @@ function displayProductInfo(productData) {
 
         // Création d'un objet contenant les infos du produit ajouté au panier
         let productToAdd = {
+            product_img: productData.imageUrl,
             product_name: productData.name,
             product_id: productData._id,
             product_qty: parseInt(selectQty.value),
