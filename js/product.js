@@ -59,6 +59,18 @@ function displayProductInfo(productData) {
         selectQty.appendChild(optionElement);
     }
     
+    // Calcul et affichage du nouveau prix en fonction de la quantité sélectionnée 
+    selectQty.addEventListener('change', updateNewPrice);
+    function updateNewPrice() {
+        let qtyPrice = (parseInt(selectQty.value) * productData.price) / 100; 
+        let newPrice = document.createElement("p");
+        newPrice.className = "qty__price";
+        newPrice.className = "bold";
+        newPrice.textContent = "Total : " + qtyPrice + ".00€";
+        document.getElementById("new__price").appendChild(newPrice);
+    }
+    
+
     // Event listener du bouton "Ajouter au panier"
     const btnAddToCart = document.getElementById("btn_addToCart"); 
     btnAddToCart.addEventListener("click", (event) => {
@@ -70,8 +82,7 @@ function displayProductInfo(productData) {
             product_id: productData._id,
             product_qty: parseInt(selectQty.value),
             product_price: productData.price / 100,
-            /* TO DO!!! Ajouter une paire pour la quantité 
-            (avant : créer une variable pour récupérer la valeur de la quantité choisie par l'utilisateur) */
+            product_newPrice: (parseInt(selectQty.value) * productData.price) / 100,
         }
         
         let cartProduct = JSON.parse(localStorage.getItem("cart"));
@@ -79,7 +90,7 @@ function displayProductInfo(productData) {
         if(cartProduct) {
             cartProduct.push(productToAdd);
             localStorage.setItem("cart", JSON.stringify(cartProduct));
-            console.log(productToAdd); 
+            
             /* TO DO!!! Ajouter un if/else selon que l'article déjà présent a la même id ou pas pour juste changer la quantité */
 
         // Si le panier est vide 
