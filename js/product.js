@@ -43,6 +43,19 @@ function displayProductInfo(productData) {
     document.getElementById("product__description").textContent = productData.description;
 
     //_________________________ AJOUT PRODUITS AU PANIER __________________________ 
+    
+    // Choix quantité 
+    let selectQty = document.getElementById("product__quantity--selector");
+    let optionsQty = ["1", "2", "3", "4", "5", "6"];
+
+    for(let i = 0; i < optionsQty.length; i++) {
+        let qty = optionsQty[i];
+        let optionElement = document.createElement("option");
+        optionElement.textContent = qty;
+        optionElement.value = qty;
+        selectQty.appendChild(optionElement);
+    }
+    
     // Event listener du bouton "Ajouter au panier"
     const btnAddToCart = document.getElementById("btn_addToCart"); 
     btnAddToCart.addEventListener("click", (event) => {
