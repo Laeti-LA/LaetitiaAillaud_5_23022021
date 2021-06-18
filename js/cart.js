@@ -22,12 +22,17 @@ if(cartProduct === null) {
         displayCartProduct(productAdded);
     }
 
+    let cartTotalPrice = document.createElement("p");
+        cartTotalPrice.className = "cart__total"
+        cartTotalPrice.textContent = "Total : .00€";
+        document.getElementById("cart__totalPrice").appendChild(cartTotalPrice);
+        console.log(cartTotalPrice);
+
     // Fonction pour créer les élements HTML et afficher les nom, qté et prix pour chaque article du localStorage
     function displayCartProduct(productAdded) {
         let productToPurchase = document.createElement("li");
         productToPurchase.className = "product__toPurchase";
         document.getElementById("cart__list").appendChild(productToPurchase);
-        console.log(productAdded); 
 
         let deleteIcon = document.createElement("i");
         deleteIcon.className = "fas fa-times";
