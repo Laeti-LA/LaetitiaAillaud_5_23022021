@@ -60,15 +60,19 @@ function displayProductInfo(productData) {
     }
     
     // Calcul et affichage du nouveau prix en fonction de la quantité sélectionnée 
+    let newPrice = document.createElement("p");
+    newPrice.className = "qty__price";
+    newPrice.className = "bold";
+    newPrice.textContent = "Total : " + productData.price  / 100 + ".00€";
+    document.getElementById("new__price").appendChild(newPrice);
+    
     selectQty.addEventListener('change', updateNewPrice);
     function updateNewPrice() {
-        let qtyPrice = (parseInt(selectQty.value) * productData.price) / 100; 
-        let newPrice = document.createElement("p");
-        newPrice.className = "qty__price";
-        newPrice.className = "bold";
-        newPrice.textContent = "Total : " + qtyPrice + ".00€";
-        document.getElementById("new__price").appendChild(newPrice);
+        let qtyPrice = (parseInt(selectQty.value) * productData.price) / 100;
+        newPrice.textContent = "Total : " + qtyPrice + ".00€"; 
     }
+
+  
     
 
     // Event listener du bouton "Ajouter au panier"
