@@ -53,12 +53,27 @@ function displayProductInfo(productData) {
             product_name: productData.name,
             product_id: productData._id,
             product_price: productData.price / 100,
+            /* TO DO!!! Ajouter une paire pour la quantité 
+            (avant : créer une variable pour récupérer la valeur de la quantité choisie par l'utilisateur) */
         }
         
-        console.log(productToAdd); 
         let cartProduct = JSON.parse(localStorage.getItem("cart"));
-      
-      
+        // Si des produits sont déjà présents dans le panier 
+        if(cartProduct) {
+            cartProduct.push(productToAdd);
+            localStorage.setItem("cart", JSON.stringify(cartProduct));
+            console.log(productToAdd); 
+            /* TO DO!!! Ajouter un if/else selon que l'article déjà présent a la même id ou pas pour juste changer la quantité */
+
+        // Si le panier est vide 
+        } else {
+            // Création d'un tableau (vide)
+            cartProduct = [];
+            cartProduct.push(productToAdd);
+            localStorage.setItem("cart", JSON.stringify(cartProduct));
+        }
+
+        
 
 })
 
