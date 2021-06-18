@@ -1,5 +1,6 @@
 main() // Main function, dès le chargement de la page 
 async function main() {
+    closePopupContainer();
     const productId = getProductId(); //Etape 1 : récupérer id du produit grâce à son url
     const productData = await getProductData(productId); //Etape 2 : récupérer les données du produit grâce à son id
     displayProductInfo(productData); //Etape 3 : afficher les infos du produit 
@@ -8,6 +9,11 @@ async function main() {
 }
 
 // _______________________ AFFICHAGE DE LA PAGE PRODUIT _______________________
+
+// Fonction pour masquer la popup 
+function closePopupContainer() {
+    document.getElementById("popupContainer").style.display = "none";
+}
 
 // Fonction pour récupérer l'id du produit dans l'url 
 function getProductId() {
@@ -90,19 +96,22 @@ function displayProductInfo(productData) {
         }
         
         let cartProduct = JSON.parse(localStorage.getItem("cart"));
-        // Si des produits sont déjà présents dans le panier 
+        // Si des produits sont déjà présents dans le panier, tableau déjà créé et donc juste ajout (push) d'un nouvel objet productToAdd
         if(cartProduct) {
             cartProduct.push(productToAdd);
             localStorage.setItem("cart", JSON.stringify(cartProduct));
-            
-            /* TO DO!!! Ajouter un if/else selon que l'article déjà présent a la même id ou pas pour juste changer la quantité */
+            // Affichage d'une popup "produit ajouté au panier"
+            document.getElementById("popupContainer").style.display = "flex";
+            /* TO DO!!! Ajouter un if/else selon que l'article déjà présent a la même id 
+            ou pas pour changer uniquement la quantité */
 
         // Si le panier est vide 
         } else {
-            // Création d'un tableau (vide)
+            // Création d'un tableau (vide) et ajout (push) d'un nouvel objet productToAdd
             cartProduct = [];
             cartProduct.push(productToAdd);
             localStorage.setItem("cart", JSON.stringify(cartProduct));
+            document.getElementById("popupContainer").style.display = "flex";
         }
 
         

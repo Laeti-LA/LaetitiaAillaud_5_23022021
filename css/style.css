@@ -218,3 +218,53 @@ button{
     transform: scale(1.05);
 }
 
+/* Pop up Ajout produit au panier */
+.popupContainer{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup{
+    background-color: #F3E9F1;
+    border-radius: 20px;
+    box-shadow: 2px 3px 5px grey;
+    padding: 30px 30px 30px 30px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.popup__title{
+    margin-top: 0;
+}
+
+.popup__cta{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.popup__btn{
+    background: linear-gradient(to right bottom, #ea7c37, #f06c53, #ee626e, #e25e87, #ce619d, #c660a9, #ba61b6, #aa63c2, #a860d0, #a35dde, #9b5bee, #8f5bfe);
+    color: white;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 2px 3px 5px grey;
+    transform: scale(1);
+    transition: all 300ms;
+}
+
+.popup__btn:hover{
+    transform: scale(1.05);
+}
