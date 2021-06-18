@@ -44,8 +44,11 @@ function displayProductInfo(productData) {
 
     //_________________________ AJOUT PRODUITS AU PANIER __________________________ 
     
-    // Choix quantité 
-    let selectQty = document.getElementById("product__quantity--selector");
+    // Choix quantité : création d'une liste déroulante de quantité à partir d'un tableau  
+    let selectQty = document.createElement("select");
+    selectQty.className = "product__quantity--selector";
+    selectQty.id = "product__quantity--selector";
+    document.getElementById("product__quantity").appendChild(selectQty);
     let optionsQty = ["1", "2", "3", "4", "5", "6"];
 
     for(let i = 0; i < optionsQty.length; i++) {
@@ -65,6 +68,7 @@ function displayProductInfo(productData) {
         let productToAdd = {
             product_name: productData.name,
             product_id: productData._id,
+            product_qty: parseInt(selectQty.value),
             product_price: productData.price / 100,
             /* TO DO!!! Ajouter une paire pour la quantité 
             (avant : créer une variable pour récupérer la valeur de la quantité choisie par l'utilisateur) */
