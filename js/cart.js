@@ -24,9 +24,9 @@ if(cartProduct === null) {
 
     let cartTotalPrice = document.createElement("p");
         cartTotalPrice.className = "cart__total"
-        cartTotalPrice.textContent = "Total : .00€";
+        cartTotalPrice.textContent = "Total : .00€"; // Ajouter montant total commande !!!!!!!!!!!!!!!!
         document.getElementById("cart__totalPrice").appendChild(cartTotalPrice);
-        console.log(cartTotalPrice);
+
 
     // Fonction pour créer les élements HTML et afficher les nom, qté et prix pour chaque article du localStorage
     function displayCartProduct(productAdded) {
@@ -53,20 +53,36 @@ if(cartProduct === null) {
         productToPurchasePrice.textContent = productAdded.product_price + ".00€";
         productToPurchase.appendChild(productToPurchasePrice);
 
-        let qtyMinus = document.createElement("p");
+        let qtyMinus = document.createElement("button");
         qtyMinus.className = "qty__minus"
         qtyMinus.textContent = "-";
         productToPurchase.appendChild(qtyMinus);
+        qtyMinus.addEventListener('click', event => {
+            event.preventDefault();
+            // Si quantité actuelle = 1, supprimer la ligne/retirer le produit du panier et le localStorage
+            if(parseInt(productAdded.product_qty) === 1){
+                productToPurchase.style.display='none';
+            // Si quantité actuelle > 1, mettre à jour la quantité dans le panier et le localStorage
+            }else{
+                let newQty = parseInt(productAdded.product_qty-=1);
+                productToPurchaseQty.textContent = newQty;
+            }
+        })
 
         let productToPurchaseQty = document.createElement("p");
         productToPurchaseQty.className = "cartProduct__qty";
-        productToPurchaseQty.textContent = productAdded.product_qty;
+        productToPurchaseQty.textContent = parseInt(productAdded.product_qty);
         productToPurchase.appendChild(productToPurchaseQty);
 
-        let qtyPlus = document.createElement("p");
+        let qtyPlus = document.createElement("button");
         qtyPlus.className = "qty__plus"
         qtyPlus.textContent = "+";
         productToPurchase.appendChild(qtyPlus);
+        qtyPlus.addEventListener('click', event => {
+            event.preventDefault();
+            newQty = parseInt(productAdded.product_qty+=1);
+            productToPurchaseQty.textContent = newQty;
+        })
 
         let productToPurchaseNewPrice = document.createElement("p");
         productToPurchaseNewPrice.className = "cartProduct__newPrice"
