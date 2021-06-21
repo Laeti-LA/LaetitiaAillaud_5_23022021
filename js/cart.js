@@ -120,14 +120,75 @@ if(cartProduct === null || cartProduct == 0) {
     let orderPrice = 0;
     for (let j in cartProduct) {
         orderPrice += (parseInt(cartProduct[j].product_qty) * (cartProduct[j].product_price));
-        console.log(orderPrice);
     }
 
     // Affichage du montant total de la commande 
     let cartTotalPrice = document.createElement("p");
-        cartTotalPrice.className = "cart__total"
-        cartTotalPrice.textContent = "Total : "+ orderPrice + ".00€"; // Ajouter montant total commande !!!!!!!!!!!!!!!!
-        document.getElementById("cart__totalPrice").appendChild(cartTotalPrice);
+    cartTotalPrice.className = "cart__total bold"
+    cartTotalPrice.textContent = "Total : "+ orderPrice + ".00€"; // Ajouter montant total commande !!!!!!!!!!!!!!!!
+    document.getElementById("cart__totalPrice").appendChild(cartTotalPrice);
 
+    // Calcul du nombre d'articles dans le panier 
+    let orderQty = 0;
+    for (let k in cartProduct) {
+        orderQty += cartProduct[k].product_qty;
+        console.log(orderQty);
+    }
+
+    let orderQtyDisplay = document.getElementById("cartProductsQty");
+    orderQtyDisplay.textContent = "Votre panier contient " + orderQty + " article(s)";
+
+    // Bouton pour valider la panier et afficher le formulaire 
+    let cartCtaBtn = document.createElement("button");
+    cartCtaBtn.className = "cartBtn";
+    cartCtaBtn.textContent = "Valider le panier";
+    document.getElementById("cart__ctaBtn").appendChild(cartCtaBtn);
+    cartCtaBtn.addEventListener('click', event => {
+        event.preventDefault();
+        // Créer/Afficher section 2 formulaire 
+        cartCtaBtn.style.display = "none";
+        let formTitle = document.createElement("h2");
+        formTitle.className = "formContent__title";
+        formTitle.textContent = "Vos coordonnées"; 
+        document.getElementById("formContent").appendChild(formTitle);
+
+        let orderForm = document.createElement("form");
+        orderForm.className = "order__form";
+
+        orderForm.innerHTML = `
+            <form class="order__form" id="order__form">
+                <div class="orderForm orderForm--firstName">
+                    <label class="formLabel formLabel--firstName">Prénom</label>
+                    <input class="formInput formInput--firstName" type="text" name="firstName" required>
+                </div>
+                <div class="orderForm orderForm--lastName">
+                    <label class="formLabel formLabel--lastName">Nom</label>
+                    <input class="formInput formInput--lastName" type="text" name="lastName" required>
+                </div>
+                <div class="orderForm orderForm--address">
+                    <label class="formLabel formLabel--address">Adresse</label>
+                    <input class="formInput formInput--address" type="text" name="address" required>
+                </div>
+                <div class="orderForm  orderForm--zipCode">
+                    <label class="formLabel formLabel--zipCode">Code postal</label>
+                    <input class="formInput formInput--zipCode" type="number" name="zipCode">
+                </div>
+                <div class="orderForm orderForm--city">
+                    <label class="formLabel formLabel--city">Ville</label>
+                    <input class="formInput formInput--city" type="text" name="city" required>
+                </div>
+                <div class="orderForm orderForm--email">
+                    <label class="formLabel formLabel--email">Email</label>
+                    <input class="formInput formInput--email" type="email" name="email" required>
+                </div>
+            </form>
+        `;
+        document.getElementById("formContent").appendChild(orderForm);
+
+        let validateOrderBtn = document.createElement("button");
+        validateOrderBtn.className = "validateOrder__btn";
+        validateOrderBtn.textContent = "Valider la commande"; 
+        document.getElementById("formContent").appendChild(validateOrderBtn);
+    })
 
 }

@@ -302,6 +302,12 @@ button{
 .addToCart__btn:hover{
     transform: scale(1.05);
 }
+
+.cartProductsQty{
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+
 .cartContent{
     width: 100%;
     display: flex; 
@@ -481,4 +487,128 @@ justify-self: center;
     text-align: end;
     width: 95%;
     font-size: 18px;
+}
+
+@media screen and (min-width: 992px){
+    .cart__ctaBtn{
+        width: 85.5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}
+
+.cartBtn{
+    background: linear-gradient(to right bottom, #ea7c37, #f06c53, #ee626e, #e25e87, #ce619d, #c660a9, #ba61b6, #aa63c2, #a860d0, #a35dde, #9b5bee, #8f5bfe);
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 2px 3px 5px grey;
+    transform: scale(1);
+    transition: all 300ms;
+    margin-top: 20px;
+    margin-bottom: 80px;
+}
+
+.cartBtn:hover{
+    transform: scale(1.05);
+}
+
+
+/* Formulaire */ 
+
+.formContent{
+    margin-bottom: 80px;
+    width: 90%;
+    border-top: 1px solid grey;
+}
+
+.formContent__title{
+    margin-top: 60px; 
+    margin-bottom: 60px;
+}
+
+.formInput{
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.order__form{
+    background-color: #F3E9F1;
+    box-shadow: 2px 3px 5px grey;
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.formLabel{
+    font-size: 20px;
+    width: 50px;
+    margin-right: 15px;
+}
+
+.orderForm{
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.orderForm--firstName{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.orderForm--lastName{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.orderForm--email{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 2;
+}
+
+.orderForm--address{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 3;
+}
+
+.orderForm--zipCode{
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.orderForm--city{
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.validateOrder__btn{
+    background: linear-gradient(to right bottom, #ea7c37, #f06c53, #ee626e, #e25e87, #ce619d, #c660a9, #ba61b6, #aa63c2, #a860d0, #a35dde, #9b5bee, #8f5bfe);
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 2px 3px 5px grey;
+    transform: scale(1);
+    transition: all 300ms;
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.validateOrder__btn:hover{
+    transform: scale(1.05);
 }
