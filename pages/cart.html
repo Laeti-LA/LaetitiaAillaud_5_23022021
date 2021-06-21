@@ -9,6 +9,7 @@
         <link rel="icon" type="image/png" href="../images/logo-orinoco.ico"/>
         <link rel="stylesheet" href="../css/style.css"/>
         <script src="../js/cart.js" defer></script>
+        <script src="../js/utils.js" defer></script>
     </head>
     <body>
         <header>
@@ -25,13 +26,14 @@
                     <a href="cart.html">
                         <i class="cart-icon fas fa-shopping-cart"></i>
                     </a>
+                    <p class="product_nb"></p>
                  </div>
              </div>
         </header>
         <main class="container cart__mainContainer" id="cart__mainContainer">
             <h1 id="cart__title">Récapitulatif de votre panier</h1>
             <section class="cartContent">
-                <h2 id="cartProductsQty"></h2>
+                <h2 id="cartProductsQty" class="cartProductsQty"></h2>
                 <div class="cart__details" id="cart__details">
                     <ul class="cart__list" id="cart__list">
 

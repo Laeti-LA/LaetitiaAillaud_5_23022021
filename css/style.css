@@ -32,13 +32,20 @@ body{
 }
 
 .cart-icon{
-    margin-right: 30px; 
+    margin-right: 10px; 
     font-size: 30px;
     background: linear-gradient(to right bottom, #ea7c37, #f06c53, #ee626e, #e25e87, #ce619d, #c660a9, #ba61b6, #aa63c2, #a860d0, #a35dde, #9b5bee, #8f5bfe); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 } 
 
+.shopping-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 30px; 
+}
 
 /* PAGE D'ACCUEIL : vues produits sous forme de cartes cliquables */
 
@@ -329,12 +336,23 @@ button{
     margin-bottom: 30px;
 }
 
-.fa-times{
+.delete__btn{
     grid-column: 1;
     grid-row-start: 1;
     grid-row-end: 4;
     justify-self: center;
     align-self: center;
+    background-color: white;
+    transform: scale(1);
+    transition: all 200ms;
+}
+
+.delete__btn:hover{
+    transform: scale(1.2);
+}
+
+.delete_icon{
+    font-size: 22px;
 }
 
 .cartProduct__img{
@@ -342,7 +360,7 @@ button{
     grid-column: 2;
     grid-row-start: 1;
     grid-row-end: 4;
-    justify-self: center;
+justify-self: center;
 }
 
 .cartProduct__name{
@@ -402,7 +420,7 @@ button{
         font-size: 18px; 
     }
 
-    .fa-times{
+    .delete__btn{
         grid-column: 1;
         grid-row: 1;
         justify-self: center;
