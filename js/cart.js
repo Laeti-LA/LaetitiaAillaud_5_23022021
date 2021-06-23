@@ -195,12 +195,25 @@ if(cartProduct === null || cartProduct == 0) {
                 document.getElementById("firstName").style.border='2px solid red';
             }
         })
-        
 
-        // Fonction pour changer la couleur d'un champ de formulaire en vert 
-        
+        document.getElementById("lastName").addEventListener("change", event => {
+            const lastNameCheck = document.getElementById("lastName").value;
+            if(/^[A-ZZa-z]{2,20}$/.test(lastNameCheck)){
+                document.getElementById("lastName").style.border='1px solid green';
+            }else{  
+                document.getElementById("lastName").style.border='2px solid red';
+            }
+        })
 
-        // Fonction pour changer la couleur d'un champ de formulaire en rouge 
+        document.getElementById("city").addEventListener("change", event => {
+            const cityCheck = document.getElementById("city").value;
+            if(/^[A-ZZa-z]{2,20}$/.test(cityCheck)){
+                document.getElementById("city").style.border='1px solid green';
+            }else{  
+                document.getElementById("city").style.border='2px solid red';
+            }
+        })
+        
         
 
         // ------------------- Fin vérification des données du formulaire ------------------- 
