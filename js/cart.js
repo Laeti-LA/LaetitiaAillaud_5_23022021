@@ -186,46 +186,73 @@ if(cartProduct === null || cartProduct == 0) {
 
         // --------------------- Vérification des données du formulaire --------------------- 
 
+        // Vérification du champ prénom/firstName une fois qu'il est rempli
+        document.getElementById("firstName").addEventListener("change", event => {
+            checkFirstName();
+        })
+
+        document.getElementById("lastName").addEventListener("change", event => {
+            checkLastName();
+        })
+
+        document.getElementById("city").addEventListener("change", event => {
+            checkCity();
+        })
+
         // Fonction regEx prénom/nom/ville 
         function regExFisrtNameLastNameCity(value){
             return /^[A-ZZa-z]{2,20}$/.test(value);
         };
 
-        // Vérification du champ prénom/firstName 
-        document.getElementById("firstName").addEventListener("change", event => {
+        // Fonction pour vérifier le champ prénom/firstName 
+        function checkFirstName(){
             const firstNameCheck = document.getElementById("firstName").value;
             if(regExFisrtNameLastNameCity(firstNameCheck)){
                 document.getElementById("firstName").style.border='1px solid green';
+                console.log("ok");
+                return true;
             }else{  
                 document.getElementById("firstName").style.border='2px solid red';
+                console.log("not ok");
+                return false;
             }
-        })
+        }
 
-        // Vérification du champ nom/lastName 
-        document.getElementById("lastName").addEventListener("change", event => {
-            const lastNameCheck = document.getElementById("lastName").value;
-            if(regExFisrtNameLastNameCity(lastNameCheck)){
+        // Fonction pour vérifier le champ nom/lastName 
+        function checkLastName(){
+            const LastNameCheck = document.getElementById("lastName").value;
+            if(regExFisrtNameLastNameCity(LastNameCheck)){
                 document.getElementById("lastName").style.border='1px solid green';
+                console.log("ok");
+                return true;
             }else{  
                 document.getElementById("lastName").style.border='2px solid red';
+                console.log("not ok");
+                return false;
             }
-        })
+        }
 
-        // Vérification du champ ville/city
-        document.getElementById("city").addEventListener("change", event => {
+        // Fonction pour vérifier le champ ville/city 
+        function checkCity(){
             const cityCheck = document.getElementById("city").value;
             if(regExFisrtNameLastNameCity(cityCheck)){
                 document.getElementById("city").style.border='1px solid green';
+                console.log("ok");
+                return true;
             }else{  
                 document.getElementById("city").style.border='2px solid red';
+                console.log("not ok");
+                return false;
             }
-        })
+        }
+      
         
         
 
         // ------------------- Fin vérification des données du formulaire ------------------- 
 
 
+        // ----------------------------- Bouton Valider commande ---------------------------- 
         let validateOrderBtn = document.createElement("input");
         validateOrderBtn.type = "submit";
         validateOrderBtn.className = "validateOrder__btn";
