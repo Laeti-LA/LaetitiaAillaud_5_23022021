@@ -3,10 +3,10 @@ let cartProduct = JSON.parse(localStorage.getItem("cart"));
 
 // Fonction pour afficher un message "panier vide" quand le localStorage est vide
 function displayEmptyCartMsg(){
-    const emptyCart = document.createElement("h1");
+    const emptyCart = document.createElement("h2");
     emptyCart.textContent = "Votre panier est vide.";
     emptyCart.className = "cart__title";
-    document.getElementById("cart__mainContainer").appendChild(emptyCart);
+    document.getElementById("cartContent").appendChild(emptyCart);
 
     const linkBtn = document.createElement("a");
     linkBtn.href = "../index.html";
@@ -132,7 +132,6 @@ if(cartProduct === null || cartProduct == 0) {
     let orderQty = 0;
     for (let k in cartProduct) {
         orderQty += cartProduct[k].product_qty;
-        console.log(orderQty);
     }
 
     let orderQtyDisplay = document.getElementById("cartProductsQty");
@@ -159,36 +158,73 @@ if(cartProduct === null || cartProduct == 0) {
             <form class="order__form" id="order__form">
                 <div class="orderForm orderForm--firstName">
                     <label class="formLabel formLabel--firstName">Prénom</label>
-                    <input class="formInput formInput--firstName" type="text" name="firstName" required>
+                    <input class="formInput formInput--firstName" type="text" id="firstName" name="firstName" required>
                 </div>
                 <div class="orderForm orderForm--lastName">
                     <label class="formLabel formLabel--lastName">Nom</label>
-                    <input class="formInput formInput--lastName" type="text" name="lastName" required>
+                    <input class="formInput formInput--lastName" type="text" id="lastName" name="lastName" required>
                 </div>
                 <div class="orderForm orderForm--address">
                     <label class="formLabel formLabel--address">Adresse</label>
-                    <input class="formInput formInput--address" type="text" name="address" required>
+                    <input class="formInput formInput--address" type="text" id="address" name="address" required>
                 </div>
                 <div class="orderForm  orderForm--zipCode">
                     <label class="formLabel formLabel--zipCode">Code postal</label>
-                    <input class="formInput formInput--zipCode" type="number" name="zipCode">
+                    <input class="formInput formInput--zipCode" type="number" id="zipCode" name="zipCode">
                 </div>
                 <div class="orderForm orderForm--city">
                     <label class="formLabel formLabel--city">Ville</label>
-                    <input class="formInput formInput--city" type="text" name="city" required>
+                    <input class="formInput formInput--city" type="text" id="city" name="city" required>
                 </div>
                 <div class="orderForm orderForm--email">
                     <label class="formLabel formLabel--email">Email</label>
-                    <input class="formInput formInput--email" type="email" name="email" required>
+                    <input class="formInput formInput--email" type="email" id="email" name="email" required>
                 </div>
             </form>
         `;
         document.getElementById("formContent").appendChild(orderForm);
 
-        let validateOrderBtn = document.createElement("button");
+        let validateOrderBtn = document.createElement("input");
+        validateOrderBtn.type = "submit";
         validateOrderBtn.className = "validateOrder__btn";
-        validateOrderBtn.textContent = "Valider la commande"; 
+        validateOrderBtn.id = "validateOrder__btn";
+        validateOrderBtn.value = "Valider la commande"; 
         document.getElementById("formContent").appendChild(validateOrderBtn);
+        // Ajout d'un addEventListener au clic sur le bouton de validation de la commande 
+        validateOrderBtn.addEventListener('click', (event) =>{
+            event.preventDefault();
+            // Création d'un objet contact avec les infos de l'utilisateur nécessaires pour passer la commande 
+            const contact = {
+                firstName : document.getElementById("firstName").value,
+                lastName : document.getElementById("lastName").value,
+                email: document.getElementById("email").value,
+                address : document.getElementById("address").value,
+                city : document.getElementById("city").value
+            };
+
+            // Ajout objet contact au localStorage 
+            localStorage.setItem("contact", JSON.stringify(contact));
+
+            // Création d'un tableau avec les id des produits du panier 
+            let products = [];
+            for (let l = 0; l < cartProduct.length; l++) {
+                let product = cartProduct[l];
+                let id = product.product_id;
+                products.push(id);
+            }
+
+            // Création d'un objet contenant l'objet contact + le tableau de produits 
+            const orderData = {
+                contact,
+                products,
+            };
+            console.log(orderData);
+
+            
+
+
+
+        }) // --------------- Fin AddEventListener du bouton valider commande -------------
     })
 
 }
