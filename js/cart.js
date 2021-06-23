@@ -184,30 +184,69 @@ if(cartProduct === null || cartProduct == 0) {
         `;
         document.getElementById("formContent").appendChild(orderForm);
 
-        // --------------------- Vérification des données du formulaire --------------------- 
+        // --------------------- VERIFICATION DES DONNEES DU FORMULAIRE --------------------- 
 
         // Vérification du champ prénom/firstName une fois qu'il est rempli
         document.getElementById("firstName").addEventListener("change", event => {
             checkFirstName();
         })
 
+        // Vérification du champ nom/lastName une fois qu'il est rempli
         document.getElementById("lastName").addEventListener("change", event => {
             checkLastName();
         })
 
+        // Vérification du champ ville/city une fois qu'il est rempli
         document.getElementById("city").addEventListener("change", event => {
             checkCity();
         })
 
-        // Fonction regEx prénom/nom/ville 
-        function regExFisrtNameLastNameCity(value){
+        // Vérification du champ email une fois qu'il est rempli
+        document.getElementById("email").addEventListener("change", event => {
+            checkEmail();
+        })
+
+        // Vérification du champ adresse une fois qu'il est rempli
+        document.getElementById("address").addEventListener("change", event => {
+            checkAddress();
+        })
+
+        // Vérification du champ adresse une fois qu'il est rempli
+        document.getElementById("zipCode").addEventListener("change", event => {
+            checkZipCode();
+        })
+
+        // ----- Fonctions RegEx ---------------------------------
+        // Fonction regEx prénom/nom
+        function regExName(value){
             return /^[A-ZZa-z]{2,20}$/.test(value);
         };
 
+        // Fonction regEx email
+        function regExEmail(value){
+            return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+        };
+
+        // Fonction regEx adresse
+        function regExAddress(value){
+            return /^[A-Za-z0-9\s'-]{4,40}$/.test(value);
+        };
+
+        // Fonction regEx code postal
+        function regExZipCode(value){
+            return /^[0-9]{5}$/.test(value);
+        };
+
+        // Fonction regEx ville
+        function regExCity(value){
+            return /^[A-Za-z\s'-]{3,20}$/.test(value);
+        };
+
+        // ----- Fonctions pour vérifier les champs -------------- 
         // Fonction pour vérifier le champ prénom/firstName 
         function checkFirstName(){
             const firstNameCheck = document.getElementById("firstName").value;
-            if(regExFisrtNameLastNameCity(firstNameCheck)){
+            if(regExName(firstNameCheck)){
                 document.getElementById("firstName").style.border='1px solid green';
                 console.log("ok");
                 return true;
@@ -221,7 +260,7 @@ if(cartProduct === null || cartProduct == 0) {
         // Fonction pour vérifier le champ nom/lastName 
         function checkLastName(){
             const LastNameCheck = document.getElementById("lastName").value;
-            if(regExFisrtNameLastNameCity(LastNameCheck)){
+            if(regExName(LastNameCheck)){
                 document.getElementById("lastName").style.border='1px solid green';
                 console.log("ok");
                 return true;
@@ -231,11 +270,39 @@ if(cartProduct === null || cartProduct == 0) {
                 return false;
             }
         }
+      
+        // Fonction pour vérifier le champ email
+        function checkEmail(){
+            const emailCheck = document.getElementById("email").value;
+            if(regExEmail(emailCheck)){
+                document.getElementById("email").style.border='1px solid green';
+                console.log("ok");
+                return true;
+            }else{  
+                document.getElementById("email").style.border='2px solid red';
+                console.log("not ok");
+                return false;
+            }
+        }
+
+        // Fonction pour vérifier le champ adresse postale/address 
+        function checkAddress(){
+            const addressCheck = document.getElementById("address").value;
+            if(regExAddress(addressCheck)){
+                document.getElementById("address").style.border='1px solid green';
+                console.log("ok");
+                return true;
+            }else{  
+                document.getElementById("address").style.border='2px solid red';
+                console.log("not ok");
+                return false;
+            }
+        }
 
         // Fonction pour vérifier le champ ville/city 
         function checkCity(){
             const cityCheck = document.getElementById("city").value;
-            if(regExFisrtNameLastNameCity(cityCheck)){
+            if(regExCity(cityCheck)){
                 document.getElementById("city").style.border='1px solid green';
                 console.log("ok");
                 return true;
@@ -245,14 +312,26 @@ if(cartProduct === null || cartProduct == 0) {
                 return false;
             }
         }
-      
-        
+
+        // Fonction pour vérifier le champ code postal/zip code
+        function checkZipCode(){
+            const zipCodeCheck = document.getElementById("zipCode").value;
+            if(regExZipCode(zipCodeCheck)){
+                document.getElementById("zipCode").style.border='1px solid green';
+                console.log("ok");
+                return true;
+            }else{  
+                document.getElementById("zipCode").style.border='2px solid red';
+                console.log("not ok");
+                return false;
+            }
+        }
         
 
         // ------------------- Fin vérification des données du formulaire ------------------- 
 
 
-        // ----------------------------- Bouton Valider commande ---------------------------- 
+        // -----------------------------BOUTON VALIDER COMMANDE ---------------------------- 
         let validateOrderBtn = document.createElement("input");
         validateOrderBtn.type = "submit";
         validateOrderBtn.className = "validateOrder__btn";
@@ -262,44 +341,48 @@ if(cartProduct === null || cartProduct == 0) {
         // Ajout d'un addEventListener au clic sur le bouton de validation de la commande 
         validateOrderBtn.addEventListener('click', (event) =>{
             event.preventDefault();
-            // Création d'un objet contact avec les infos de l'utilisateur nécessaires pour passer la commande 
-            const contact = {
-                firstName : document.getElementById("firstName").value,
-                lastName : document.getElementById("lastName").value,
-                email: document.getElementById("email").value,
-                address : document.getElementById("address").value,
-                city : document.getElementById("city").value
-            };
-
-            // Ajout objet contact au localStorage 
-            localStorage.setItem("contact", JSON.stringify(contact));
-
-            // Création d'un tableau avec les id des produits du panier 
-            let products = [];
-            for (let l = 0; l < cartProduct.length; l++) {
-                let product = cartProduct[l];
-                let id = product.product_id;
-                products.push(id);
+            // Si champs du formulaire correctement remplis : 
+            if(checkFirstName() && checkLastName() && checkCity()){
+                // Création d'un objet contact avec les infos de l'utilisateur nécessaires pour passer la commande 
+                const contact = {
+                    firstName : document.getElementById("firstName").value,
+                    lastName : document.getElementById("lastName").value,
+                    email: document.getElementById("email").value,
+                    address : document.getElementById("address").value,
+                    city : document.getElementById("city").value
+                };
+    
+                // Ajout objet contact au localStorage 
+                localStorage.setItem("contact", JSON.stringify(contact));
+    
+                // Création d'un tableau avec les id des produits du panier 
+                let products = [];
+                for (let l = 0; l < cartProduct.length; l++) {
+                    let product = cartProduct[l];
+                    let id = product.product_id;
+                    products.push(id);
+                }
+    
+                // Création d'un objet contenant l'objet contact + le tableau de produits 
+                const orderData = {
+                    contact,
+                    products,
+                };
+                console.log(orderData);
+    
+                // Envoi des données de la commande (objet orderData) vers le serveur 
+                fetch('http://localhost:3000/api/cameras/order', {
+                    method: "POST",
+                    headers: { 
+                        'Accept': 'application/json', 
+                        'Content-Type': 'application/json' 
+                    },
+                        body: JSON.stringify(orderData)
+                });
+            // Si champs du formulaire mal remplis : 
+            }else{
+                alert("error");
             }
-
-            // Création d'un objet contenant l'objet contact + le tableau de produits 
-            const orderData = {
-                contact,
-                products,
-            };
-            console.log(orderData);
-
-            // Envoi des données de la commande au serveur 
-            fetch('http://localhost:3000/api/cameras/order', {
-                method: "POST",
-                headers: { 
-                    'Accept': 'application/json', 
-                    'Content-Type': 'application/json' 
-                },
-                    body: JSON.stringify(orderData)
-            });
-
-
 
         }) // --------------- Fin AddEventListener du bouton valider commande -------------
     })
