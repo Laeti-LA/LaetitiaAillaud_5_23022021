@@ -184,6 +184,28 @@ if(cartProduct === null || cartProduct == 0) {
         `;
         document.getElementById("formContent").appendChild(orderForm);
 
+        // --------------------- Vérification des données du formulaire --------------------- 
+
+        // Champs prénom/firstName 
+        document.getElementById("firstName").addEventListener("change", event => {
+            const firstNameCheck = document.getElementById("firstName").value;
+            if(/^[A-ZZa-z]{2,20}$/.test(firstNameCheck)){
+                document.getElementById("firstName").style.border='1px solid green';
+            }else{  
+                document.getElementById("firstName").style.border='2px solid red';
+            }
+        })
+        
+
+        // Fonction pour changer la couleur d'un champ de formulaire en vert 
+        
+
+        // Fonction pour changer la couleur d'un champ de formulaire en rouge 
+        
+
+        // ------------------- Fin vérification des données du formulaire ------------------- 
+
+
         let validateOrderBtn = document.createElement("input");
         validateOrderBtn.type = "submit";
         validateOrderBtn.className = "validateOrder__btn";
@@ -220,7 +242,15 @@ if(cartProduct === null || cartProduct == 0) {
             };
             console.log(orderData);
 
-            
+            // Envoi des données de la commande au serveur 
+            fetch('http://localhost:3000/api/cameras/order', {
+                method: "POST",
+                headers: { 
+                    'Accept': 'application/json', 
+                    'Content-Type': 'application/json' 
+                },
+                    body: JSON.stringify(orderData)
+            });
 
 
 
