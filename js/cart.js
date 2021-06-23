@@ -186,28 +186,35 @@ if(cartProduct === null || cartProduct == 0) {
 
         // --------------------- Vérification des données du formulaire --------------------- 
 
-        // Champs prénom/firstName 
+        // Fonction regEx prénom/nom/ville 
+        function regExFisrtNameLastNameCity(value){
+            return /^[A-ZZa-z]{2,20}$/.test(value);
+        };
+
+        // Vérification du champ prénom/firstName 
         document.getElementById("firstName").addEventListener("change", event => {
             const firstNameCheck = document.getElementById("firstName").value;
-            if(/^[A-ZZa-z]{2,20}$/.test(firstNameCheck)){
+            if(regExFisrtNameLastNameCity(firstNameCheck)){
                 document.getElementById("firstName").style.border='1px solid green';
             }else{  
                 document.getElementById("firstName").style.border='2px solid red';
             }
         })
 
+        // Vérification du champ nom/lastName 
         document.getElementById("lastName").addEventListener("change", event => {
             const lastNameCheck = document.getElementById("lastName").value;
-            if(/^[A-ZZa-z]{2,20}$/.test(lastNameCheck)){
+            if(regExFisrtNameLastNameCity(lastNameCheck)){
                 document.getElementById("lastName").style.border='1px solid green';
             }else{  
                 document.getElementById("lastName").style.border='2px solid red';
             }
         })
 
+        // Vérification du champ ville/city
         document.getElementById("city").addEventListener("change", event => {
             const cityCheck = document.getElementById("city").value;
-            if(/^[A-ZZa-z]{2,20}$/.test(cityCheck)){
+            if(regExFisrtNameLastNameCity(cityCheck)){
                 document.getElementById("city").style.border='1px solid green';
             }else{  
                 document.getElementById("city").style.border='2px solid red';
