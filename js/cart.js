@@ -1,3 +1,6 @@
+
+// _______________________ AFFICHAGE DE LA PAGE PANIER _______________________
+
 // Variable avec les clés/valeurs du localStorage
 let cartProduct = JSON.parse(localStorage.getItem("cart"));
 
@@ -248,11 +251,9 @@ if(cartProduct === null || cartProduct == 0) {
             const firstNameCheck = document.getElementById("firstName").value;
             if(regExName(firstNameCheck)){
                 document.getElementById("firstName").style.border='1px solid green';
-                console.log("ok");
                 return true;
             }else{  
                 document.getElementById("firstName").style.border='2px solid red';
-                console.log("not ok");
                 return false;
             }
         }
@@ -262,11 +263,9 @@ if(cartProduct === null || cartProduct == 0) {
             const LastNameCheck = document.getElementById("lastName").value;
             if(regExName(LastNameCheck)){
                 document.getElementById("lastName").style.border='1px solid green';
-                console.log("ok");
                 return true;
             }else{  
                 document.getElementById("lastName").style.border='2px solid red';
-                console.log("not ok");
                 return false;
             }
         }
@@ -276,11 +275,9 @@ if(cartProduct === null || cartProduct == 0) {
             const emailCheck = document.getElementById("email").value;
             if(regExEmail(emailCheck)){
                 document.getElementById("email").style.border='1px solid green';
-                console.log("ok");
                 return true;
             }else{  
                 document.getElementById("email").style.border='2px solid red';
-                console.log("not ok");
                 return false;
             }
         }
@@ -290,11 +287,9 @@ if(cartProduct === null || cartProduct == 0) {
             const addressCheck = document.getElementById("address").value;
             if(regExAddress(addressCheck)){
                 document.getElementById("address").style.border='1px solid green';
-                console.log("ok");
                 return true;
             }else{  
                 document.getElementById("address").style.border='2px solid red';
-                console.log("not ok");
                 return false;
             }
         }
@@ -304,11 +299,9 @@ if(cartProduct === null || cartProduct == 0) {
             const cityCheck = document.getElementById("city").value;
             if(regExCity(cityCheck)){
                 document.getElementById("city").style.border='1px solid green';
-                console.log("ok");
                 return true;
             }else{  
                 document.getElementById("city").style.border='2px solid red';
-                console.log("not ok");
                 return false;
             }
         }
@@ -318,11 +311,9 @@ if(cartProduct === null || cartProduct == 0) {
             const zipCodeCheck = document.getElementById("zipCode").value;
             if(regExZipCode(zipCodeCheck)){
                 document.getElementById("zipCode").style.border='1px solid green';
-                console.log("ok");
                 return true;
             }else{  
                 document.getElementById("zipCode").style.border='2px solid red';
-                console.log("not ok");
                 return false;
             }
         }
@@ -342,7 +333,7 @@ if(cartProduct === null || cartProduct == 0) {
         validateOrderBtn.addEventListener('click', (event) =>{
             event.preventDefault();
             // Si champs du formulaire correctement remplis : 
-            if(checkFirstName() && checkLastName() && checkCity()){
+            if(checkFirstName() && checkLastName() && checkCity() && checkAddress() && checkEmail()){
                 // Création d'un objet contact avec les infos de l'utilisateur nécessaires pour passer la commande 
                 const contact = {
                     firstName : document.getElementById("firstName").value,
@@ -381,7 +372,12 @@ if(cartProduct === null || cartProduct == 0) {
                 });
             // Si champs du formulaire mal remplis : 
             }else{
-                alert("error");
+                document.getElementById("formPopupContainer").style.display='flex';
+                let closePopup = document.getElementById("closeFormPopup_icone");
+                closePopup.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    document.getElementById("formPopupContainer").style.display='none';
+                })
             }
 
         }) // --------------- Fin AddEventListener du bouton valider commande -------------

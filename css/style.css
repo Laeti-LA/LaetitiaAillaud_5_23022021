@@ -238,6 +238,10 @@ button{
     align-items: center;
 }
 
+.formPopupContainer{
+    display: none;
+}
+
 .popup{
     background-color: #F3E9F1;
     border-radius: 20px;
