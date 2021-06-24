@@ -1,7 +1,8 @@
 main() // Main function, dès le chargement de la page 
 async function main() {
-    // Variable avec les clés/valeurs du localStorage
+    // Etape 1 : récupérer avec les données du localStorage
     let cartProduct = JSON.parse(localStorage.getItem("cart"));
+    // Etape 2 : afficher les éléments sur la page
     displayCartElements(cartProduct);
 } 
 
@@ -26,7 +27,7 @@ if(cartProduct === null || cartProduct == 0) {
     addToCartBtn.className = "addToCart__btn";
     linkBtn.appendChild(addToCartBtn); 
 }else{
-    // Si le panier n'est pas vide, affichage des es nom, qté et prix pour chaque article du localStorage
+    // Si le panier n'est pas vide, affichage image, nom, qté et prix pour chaque article du localStorage
     for (let i = 0; i<cartProduct.length; i++) {
 
         // Pour chaque produit présent dans le localStorage : 
@@ -139,7 +140,10 @@ if(cartProduct === null || cartProduct == 0) {
     }
 
     let orderQtyDisplay = document.getElementById("cartProductsQty");
-    orderQtyDisplay.textContent = "Votre panier contient " + orderQty + " article(s)";
+    orderQtyDisplay.textContent = "Votre panier contient " + orderQty + " article(s)"; 
+
+    let orderQtyDisplayIcon = document.getElementById("product__nb");
+    orderQtyDisplayIcon.textContent = "(" + orderQty + ")"; 
 
     // Bouton pour valider la panier et afficher le formulaire 
     let cartCtaBtn = document.createElement("button");

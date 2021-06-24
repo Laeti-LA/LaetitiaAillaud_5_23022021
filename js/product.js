@@ -5,7 +5,6 @@ async function main() {
     const productData = await getProductData(productId); //Etape 2 : récupérer les données du produit grâce à son id
     displayProductInfo(productData); //Etape 3 : afficher les infos du produit 
     displayProductOptions(productData); //Etape 4 : afficher les options de personnalisation du produit
-
 }
 
 // _______________________ AFFICHAGE DE LA PAGE PRODUIT _______________________
@@ -122,6 +121,7 @@ function displayProductInfo(productData) {
             popUpProductAddedToCart();
         }
 
+        displayCartProductsNb(cartProduct);
     })
 
 }
@@ -133,6 +133,7 @@ function displayProductOptions(productData) {
         document.getElementById("product__option--selector").appendChild(productOption).innerHTML = lens;
     });
 }
+
 
 
 
