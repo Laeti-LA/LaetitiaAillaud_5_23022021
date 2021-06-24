@@ -7,7 +7,7 @@ async function main() {
     displayOrderContact(contactOrder);
     displayOrderId(idOrder);
     displayOrderProducts();
-    displayDeliveryDetails(contactOrder);
+    displayDeliveryDetails(contactOrder);;
 } 
 
 function getOrderId() {
@@ -81,5 +81,6 @@ function displayDeliveryDetails(contactOrder) {
     document.getElementById("contact__address").textContent = contactOrder.address;
     document.getElementById("contact__city").textContent = contactOrder.city;
 }
+
 
 

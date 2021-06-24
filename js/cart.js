@@ -1,16 +1,22 @@
+main() // Main function, dès le chargement de la page 
+async function main() {
+    // Variable avec les clés/valeurs du localStorage
+    let cartProduct = JSON.parse(localStorage.getItem("cart"));
+    displayCartElements(cartProduct);
+} 
 
 // _______________________ AFFICHAGE DE LA PAGE PANIER _______________________
 
-// Variable avec les clés/valeurs du localStorage
-let cartProduct = JSON.parse(localStorage.getItem("cart"));
-
-// Fonction pour afficher un message "panier vide" quand le localStorage est vide
-function displayEmptyCartMsg(){
+function displayCartElements(cartProduct){
+    // Si le panier est vide, affichage d'un message 
+if(cartProduct === null || cartProduct == 0) {
+    // Message panier vide 
     const emptyCart = document.createElement("h2");
     emptyCart.textContent = "Votre panier est vide.";
     emptyCart.className = "cart__title";
     document.getElementById("cartContent").appendChild(emptyCart);
 
+    // Bouton retour accueil
     const linkBtn = document.createElement("a");
     linkBtn.href = "../index.html";
     document.getElementById("cart__mainContainer").appendChild(linkBtn); 
@@ -19,11 +25,6 @@ function displayEmptyCartMsg(){
     addToCartBtn.textContent = "Continuer mon shopping";
     addToCartBtn.className = "addToCart__btn";
     linkBtn.appendChild(addToCartBtn); 
-}
-
-// Si le panier est vide, affichage d'un message 
-if(cartProduct === null || cartProduct == 0) {
-    displayEmptyCartMsg();
 }else{
     // Si le panier n'est pas vide, affichage des es nom, qté et prix pour chaque article du localStorage
     for (let i = 0; i<cartProduct.length; i++) {
@@ -154,9 +155,9 @@ if(cartProduct === null || cartProduct == 0) {
         formTitle.textContent = "Vos coordonnées"; 
         document.getElementById("formContent").appendChild(formTitle);
 
+        // ------------------------------ Formulaire contact ------------------------------
         let orderForm = document.createElement("form");
         orderForm.className = "order__form";
-
         orderForm.innerHTML = `
             <form class="order__form" id="order__form">
                 <div class="orderForm orderForm--firstName">
@@ -387,3 +388,8 @@ if(cartProduct === null || cartProduct == 0) {
     })
 
 }
+}
+
+
+
+
