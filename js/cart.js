@@ -325,7 +325,7 @@ if(cartProduct === null || cartProduct == 0) {
         // -----------------------------BOUTON VALIDER COMMANDE ---------------------------- 
         let validateOrderBtn = document.createElement("input");
         validateOrderBtn.type = "submit";
-        validateOrderBtn.className = "validateOrder__btn";
+        validateOrderBtn.className = "cta__btn validateOrder__btn";
         validateOrderBtn.id = "validateOrder__btn";
         validateOrderBtn.value = "Valider la commande"; 
         document.getElementById("formContent").appendChild(validateOrderBtn);

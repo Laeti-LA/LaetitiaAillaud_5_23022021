@@ -51,7 +51,7 @@ function displayOrderProducts() {
         // Affichage de la quantité 
         let PurchasedProductQty = document.createElement("p");
         PurchasedProductQty.className = "purchasedProduct__qty";
-        PurchasedProductQty.textContent = parseInt(orderProducts[i].product_qty);
+        PurchasedProductQty.textContent = "Qté: " + parseInt(orderProducts[i].product_qty);
         purchasedProduct.appendChild(PurchasedProductQty);
 
         // Calcul du prix total par référence
