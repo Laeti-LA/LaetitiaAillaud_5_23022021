@@ -69,6 +69,9 @@ function displayOrderProducts() {
 
     let orderTotal = document.getElementById("orderDetails__totalPrice");
     orderTotal.textContent = "Total : "+ orderTotalPrice + ".00€"; 
+
+    let orderTotal2 = document.getElementById("orderPriceContent");
+    orderTotal2.textContent = orderTotalPrice + ".00€"; 
 }
 
 function displayDeliveryDetails(contactOrder) {
