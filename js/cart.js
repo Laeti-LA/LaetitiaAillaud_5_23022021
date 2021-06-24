@@ -128,7 +128,7 @@ if(cartProduct === null || cartProduct == 0) {
     // Affichage du montant total de la commande 
     let cartTotalPrice = document.createElement("p");
     cartTotalPrice.className = "cart__total bold"
-    cartTotalPrice.textContent = "Total : "+ orderPrice + ".00€"; // Ajouter montant total commande !!!!!!!!!!!!!!!!
+    cartTotalPrice.textContent = "Total : "+ orderPrice + ".00€"; 
     document.getElementById("cart__totalPrice").appendChild(cartTotalPrice);
 
     // Calcul du nombre d'articles dans le panier 

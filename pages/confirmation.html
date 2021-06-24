@@ -33,8 +33,29 @@
         <main class="container confirm__mainContainer" id="confirm__mainContainer">
             <h1 class="orderConfirmation_title" id="orderConfirmation_title">Confirmation de votre commande</h1>
             <section class="oderConfirm" id="oderConfirm">
-                <p>Merci pour votre confiance, <span id="fistNameContent"> </span><span id="lastNameContent"></span>! Nous avons le plaisir de vous confirmer la prise en compte de votre commande n° <span id="orderIdContent"></span> d’un montant total de 200€.
+                <h2>Merci pour votre confiance, <span id="fistNameContent"> </span><span id="lastNameContent"></span>!</h2>
+                <p>Nous avons le plaisir de vous confirmer la prise en compte de votre commande n° <span id="orderIdContent"></span> d’un montant total de 200€.
                 </p>
+                <p>Un email de confirmation vous a été envoyé. Nous vous tiendrons informé(e) dès l’expédition de votre commande. 
+                </p>
+            </section>
+            <section class="container orderDetails" id="orderDetails">
+                <h2 class="orderDetails__title">Détail<span class="underline">s de votre co</span>mmande</h2>
+                <div class="orderDetails__container">
+                    <h3>Vos articles :</h3>
+                    <div class="orderDetails__items">
+                        <ul class="orderDetails__info" id="orderDetails__info"></ul>
+                    <p class="orderDetails__totalPrice" id="orderDetails__totalPrice"></p>
+                    </div>
+                </div>
+                <div class="contactDetails__container">
+                    <h3 class="contact__delivrery">Adresse de livraison :</h3>
+                    <p>
+                        <span id="contact__firstName"></span><span id="contact__lastName"></span></p>
+                    </p>
+                    <p id="contact__address"></p>
+                    <p id="contact__city"></p>
+                </div>
             </section>
         </main>
         <footer>
