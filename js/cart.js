@@ -355,21 +355,24 @@ if(cartProduct === null || cartProduct == 0) {
                 }
     
                 // Création d'un objet contenant l'objet contact + le tableau de produits 
-                const orderData = {
+                const order = {
                     contact,
                     products,
                 };
-                console.log(orderData);
     
                 // Envoi des données de la commande (objet orderData) vers le serveur 
-                fetch('http://localhost:3000/api/cameras/order', {
-                    method: "POST",
-                    headers: { 
-                        'Accept': 'application/json', 
-                        'Content-Type': 'application/json' 
-                    },
-                        body: JSON.stringify(orderData)
-                });
+                  fetch(`http://localhost:3000/api/cameras/order`, {
+                    method: 'POST',
+                    body: JSON.stringify(order),
+                    headers: { 'Content-Type': 'application/json' }
+                  })
+                    .then((response) => response.json())
+                    .then((json) => {
+                        window.location.href = `confirmation.html?orderId=${json.orderId}`;
+                    })
+                    .catch(() => {
+                      alert("Oups... something went wrong")
+                    })
             // Si champs du formulaire mal remplis : 
             }else{
                 document.getElementById("formPopupContainer").style.display='flex';

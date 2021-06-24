@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Orinoco | Camera vintage</title>
+        <meta name="description" content="Orinoco, e-commerce spécialisé">
+        <script src="https://kit.fontawesome.com/56e0717261.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" href="../images/logo-orinoco.ico"/>
+        <link rel="stylesheet" href="../css/style.css"/>
+        <script src="../js/confirmation.js" defer></script>
+        <script src="../js/utils.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <!-- Header avec logo, bouton de retour en page d'accueil à gauche 
+             (caché sur la page d'accueil) et icone panier à droite -->
+             <div class="header">
+                 <div class="return">
+                    <a href="../index.html">
+                        <i class="return-icon fas fa-arrow-left"></i>
+                    </a>
+                 </div>
+                 <img class="logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"/>
+                 <div class="shopping-cart">
+                    <a href="cart.html">
+                        <i class="cart-icon fas fa-shopping-cart"></i>
+                    </a>
+                    <p class="product_nb"></p>
+                 </div>
+             </div>
+        </header>
+        <main class="container confirm__mainContainer" id="confirm__mainContainer">
+            <h1 class="orderConfirmation_title" id="orderConfirmation_title">Confirmation de votre commande</h1>
+            <section class="oderConfirm" id="oderConfirm">
+                <p>Merci pour votre confiance, <span id="fistNameContent"> </span><span id="lastNameContent"></span>! Nous avons le plaisir de vous confirmer la prise en compte de votre commande n° <span id="orderIdContent"></span> d’un montant total de 200€.
+                </p>
+            </section>
+        </main>
+        <footer>
+            <!-- Footer identique sur toutes les pages : A propos, contact et 
+             liens vers les autres sites Orinoco -->
+        </footer>
+    </body>
+</html>
