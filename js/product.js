@@ -119,21 +119,22 @@ function displayProductInfo(productData) {
                     console.log("déjà présent");
                     // Calcul new qty 
                     productToPush = false;
-                    cartProduct2[p].product_qty = parseInt(cartProduct2[p].product_qty) + parseInt(selectQty.value);
-                    console.log(cartProduct[p].product_qty);
+                    console.log(cartProduct2[p].product_qty);
+                    // Ajouter nouveau produit avec quantité totale 
                     let productToAdd2 = {
                         product_img: productData.imageUrl,
                         product_name: productData.name,
                         product_id: productData._id,
-                        product_qty: cartProduct[p].product_qty + parseInt(selectQty.value),
+                        product_qty: cartProduct2[p].product_qty + parseInt(selectQty.value),
                         product_price: productData.price / 100,
-                        product_newPrice: ((cartProduct[p].product_qty + parseInt(selectQty.value)) * productData.price) / 100,
+                        product_newPrice: ((cartProduct2[p].product_qty + parseInt(selectQty.value)) * productData.price) / 100,
                     }
-                    cartProduct.push(productToAdd2);
-                    localStorage.setItem("cart", JSON.stringify(cartProduct));
-                    cartProduct2.splice([p], 1);
-                    
+                    console.log(productToAdd2);
                     // Remove ancien produit du localStorage (celui qui était déjà présent dans le panier)
+                    cartProduct.splice([p], 1, productToAdd2);
+                    localStorage.setItem("cart", JSON.stringify(cartProduct));
+                    popUpProductAddedToCart();
+
                 }else{
                     productToPush = true;
                 }
