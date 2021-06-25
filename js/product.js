@@ -77,9 +77,6 @@ function displayProductInfo(productData) {
         newPrice.textContent = "Total : " + qtyPrice + ".00€"; 
     }
 
-  
-    
-
     // Event listener du bouton "Ajouter au panier"
     const btnAddToCart = document.getElementById("btn_addToCart"); 
     btnAddToCart.addEventListener("click", (event) => {
@@ -104,24 +101,37 @@ function displayProductInfo(productData) {
 
         const popUpProductAddedToCart = () => {
             document.getElementById("popupContainer").style.display = "flex";
+            document.getElementById("closePopup_icone").addEventListener('click', () => {
+                document.getElementById("popupContainer").style.display = "none";
+            })
         }
-        
-        if(cartProduct) {
-            addToLocalStorage();
-            // Affichage d'une popup "produit ajouté au panier"
-            popUpProductAddedToCart();
-            /* TO DO!!! Ajouter un if/else selon que l'article déjà présent a la même id 
-            ou pas pour changer uniquement la quantité */
-
-        // Si le panier est vide 
-        } else {
+        // Si panier vide  
+        if(cartProduct === null) {
             // Création d'un tableau (vide) et ajout (push) d'un nouvel objet productToAdd
             cartProduct = [];
             addToLocalStorage();
+            // Affichage d'une popup "produit ajouté au panier"
             popUpProductAddedToCart();
+        } else {
+            let cartProduct = JSON.parse(localStorage.getItem("cart"));
+            cartProduct.forEach((cartItem) => {
+                if(productData._id === cartItem.product_id){
+                    console.log("déjà présent");
+                    console.log("nb d'articles déjà présents dans le LS :");
+                    console.log(cartItem.product_qty);
+                    cartItem.product_qty = cartItem.product_qty + productToAdd.product_qty;
+                    cartProduct.push(cartItem.product_qty);
+                    productToPush = false;
+                }else{
+                    productToPush = true;
+                }
+            })
+            if(productToPush){
+                addToLocalStorage();
+                // Affichage d'une popup "produit ajouté au panier"
+                popUpProductAddedToCart();
+            }
         }
-
-        displayCartProductsNb(cartProduct);
     })
 
 }

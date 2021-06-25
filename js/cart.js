@@ -24,7 +24,7 @@ if(cartProduct === null || cartProduct == 0) {
 
     const addToCartBtn = document.createElement("button");
     addToCartBtn.textContent = "Continuer mon shopping";
-    addToCartBtn.className = "addToCart__btn";
+    addToCartBtn.className = "cta__btn";
     linkBtn.appendChild(addToCartBtn); 
 }else{
     // Si le panier n'est pas vide, affichage image, nom, qté et prix pour chaque article du localStorage
