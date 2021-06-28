@@ -118,7 +118,6 @@ function displayProductInfo(productData) {
                 if(cartProduct2[p].product_id === productData._id){
                     console.log("déjà présent");
                     // Calcul new qty 
-                    productToPush = false;
                     console.log(cartProduct2[p].product_qty);
                     // Ajouter nouveau produit avec quantité totale 
                     let productToAdd2 = {
@@ -133,6 +132,7 @@ function displayProductInfo(productData) {
                     // Remove ancien produit du localStorage (celui qui était déjà présent dans le panier)
                     cartProduct.splice([p], 1, productToAdd2);
                     localStorage.setItem("cart", JSON.stringify(cartProduct));
+                    productToPush = false;
                     popUpProductAddedToCart();
 
                 }else{
