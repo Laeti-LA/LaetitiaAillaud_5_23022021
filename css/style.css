@@ -96,6 +96,14 @@ footer ul{
     margin: 0;
 }
 
+.about:hover{
+    cursor: pointer;
+}
+
+i:hover{
+    cursor: pointer;
+}
+
 @media screen and (min-width: 992px){
     .footer__menu{
         display: flex;
@@ -520,6 +528,10 @@ button{
     justify-self: flex-start;
 }
 
+.qty__minus, .qty__plus:hover{
+    cursor: pointer;
+}
+
 .cartProduct__newPrice{
     grid-column-start: 3;
     grid-column-end: 5;
@@ -528,6 +540,9 @@ button{
     margin-bottom: 0;
 }
 
+.cartProduct__img:hover{
+    cursor: pointer;
+}
 
 @media screen and (min-width: 992px){
     .product__toPurchase{

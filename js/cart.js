@@ -66,6 +66,9 @@ if(cartProduct === null || cartProduct == 0) {
         productToPurchaseImg.className = "cartProduct__img";
         productToPurchaseImg.src = cartProduct[i].product_img;
         productToPurchase.appendChild(productToPurchaseImg);
+        productToPurchaseImg.addEventListener('click', () =>{
+            window.location = '../pages/products.html?id=' + cartProduct[i].product_id;
+        })
 
         // Affichage du nom du produit
         let productToPurchaseName = document.createElement("p");
