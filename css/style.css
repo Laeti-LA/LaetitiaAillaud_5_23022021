@@ -47,7 +47,7 @@ body{
 
 /* -------------------------------- FOOTER -------------------------------- */ 
 
-footer{
+.footer__content{
     background-color: #F3E9F1;
     width: 100%;
     display: flex;
@@ -120,6 +120,36 @@ footer ul{
     }
 }
 
+/* Popup footer : A propos*/
+.popupAboutContainer{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#popup__about{
+    height: 400px;
+    width: 320px;
+    padding: 30px 40px 30px 40px;
+}
+
+.about__logo{
+    height: 50px;
+}
+
+#aboutCloseIcon{
+    margin-top: -380px;
+}
+
+.about__content{
+    line-height: 24px;
+    text-align: justify;
+}
 
 /* PAGE D'ACCUEIL : vues produits sous forme de cartes cliquables */
 

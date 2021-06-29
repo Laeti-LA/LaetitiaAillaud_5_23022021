@@ -4,9 +4,16 @@ async function main() {
     let cartProduct = JSON.parse(localStorage.getItem("cart"));
     // Etape 2 : afficher les éléments sur la page
     displayCartElements(cartProduct);
+    closePopupAbout();
 } 
 
+
 // _______________________ AFFICHAGE DE LA PAGE PANIER _______________________
+
+// Fonction pour masquer la popup A propos du footer
+function closePopupAbout(){
+    document.getElementById("popupAbout").style.display="none";
+}
 
 function displayCartElements(cartProduct){
     // Si le panier est vide, affichage d'un message 

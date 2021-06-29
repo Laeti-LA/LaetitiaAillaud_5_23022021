@@ -1,5 +1,6 @@
 main() // Main function, dès le chargement de la page 
 async function main() {
+    closePopupAbout();
     // Etape 1 : récupérer les données de la commande  
     const contactOrder = JSON.parse(localStorage.getItem("contact"));
     const idOrder = getOrderId();
@@ -9,6 +10,12 @@ async function main() {
     displayOrderProducts();
     displayDeliveryDetails(contactOrder);;
 } 
+
+
+// Fonction pour masquer la popup A propos du footer
+function closePopupAbout(){
+    document.getElementById("popupAbout").style.display="none";
+}
 
 function getOrderId() {
     return new URL(window.location.href).searchParams.get('orderId');

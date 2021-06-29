@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../css/style.css"/>
         <script src="../js/confirmation.js" defer></script>
         <script src="../js/utils.js" defer></script>
+        <script src="../js/popupfooter.js" defer></script>
     </head>
     <body>
         <header>
@@ -68,23 +69,33 @@
         <footer>
             <!-- Footer identique sur toutes les pages : A propos, contact et 
              liens vers les autres sites Orinoco -->
-             <div><img class="footer__logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"></div>
-             <nav>
-                 <ul class="footer__menu bold">
-                     <li>
-                         <a href="#">A propos</a>
-                     </li>
-                     <li>
-                         <a href="mailto:contact@orinoco.com">Contactez-nous</a>
-                     </li>
-                     <li>
-                         <a href="#">Mentions légales</a>
-                     </li>
-                     <li>
-                         <a href="#">Découvrez nos autres sites</a>
-                     </li>
-                 </ul>
-             </nav>
+             <div class="footer__content">
+                <div><img class="footer__logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"></div>
+                <nav>
+                    <ul class="footer__menu bold">
+                        <li class="footerAbout" id="footerAbout">
+                            <p>A propos</p>
+                        </li>
+                        <li>
+                            <a href="mailto:contact@orinoco.com">Contactez-nous</a>
+                        </li>
+                        <li>
+                            <a href="#">Mentions légales</a>
+                        </li>
+                        <li>
+                            <a href="#">Découvrez nos autres sites</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </footer>
+        <div class="popup__about popupAboutContainer" id="popupAbout">
+            <div class="popup" id="popup__about">
+                 <img class="about__logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco">
+                 <i class="fas fa-times about__icon closePopup_icone" id="aboutCloseIcon"></i>
+                 <h4 class="about__title bold">A propos d'Orinoco</h4>
+                 <p class="about__content">Orinoco se démarque des grands site e-commerce en proposant des applications thématiques ne vendant qu’un seul groupe de produits. Retrouvez nos sites Oribook pour les livres ou Oritextil pour les vêtements. Oricameras vous propose une sélection unique d'appareils photo vintage!</p>
+            </div>
+        </div>
     </body>
 </html>
