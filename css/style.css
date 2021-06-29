@@ -92,6 +92,10 @@ footer ul{
     padding-left: 0;
 }
 
+.about{
+    margin: 0;
+}
+
 @media screen and (min-width: 992px){
     .footer__menu{
         display: flex;

@@ -8,7 +8,8 @@ async function main() {
     displayOrderContact(contactOrder);
     displayOrderId(idOrder);
     displayOrderProducts();
-    displayDeliveryDetails(contactOrder);;
+    displayDeliveryDetails(contactOrder);
+    displayEndOfOrder();
 } 
 
 
@@ -89,5 +90,25 @@ function displayDeliveryDetails(contactOrder) {
     document.getElementById("contact__city").textContent = contactOrder.city;
 }
 
+// Fonction pour vider le localStorage lorsque l'utilisateur quitte la page de confirmation de commande 
+function clearLocalStorage(){
+    localStorage.clear();
+}
 
+function displayEndOfOrder(){
+    let endOfOrderCta = document.getElementById("endOfOrder__btn");
+    endOfOrderCta.addEventListener('click', () =>{
+        clearLocalStorage();
+    })
+
+    let returnHomeCta = document.getElementById("returnHome");
+    returnHomeCta.addEventListener('click', () =>{
+        clearLocalStorage();
+    })
+
+    let returnCart = document.getElementById("returnCart");
+    returnCart.addEventListener('click', () =>{
+        clearLocalStorage();
+    })
+}
 
