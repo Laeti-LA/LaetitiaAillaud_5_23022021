@@ -1,7 +1,6 @@
 main() // Main function, dès le chargement de la page 
 async function main() {
     closePopupContainer();
-    closePopupAbout();
     const productId = getProductId(); //Etape 1 : récupérer id du produit grâce à son url
     const productData = await getProductData(productId); //Etape 2 : récupérer les données du produit grâce à son id
     displayProductInfo(productData); //Etape 3 : afficher les infos du produit 
@@ -13,11 +12,6 @@ async function main() {
 // Fonction pour masquer la popup produit ajouté au panier
 function closePopupContainer() {
     document.getElementById("popupContainer").style.display = "none";
-}
-
-// Fonction pour masquer la popup A propos du footer
-function closePopupAbout(){
-    document.getElementById("popupAbout").style.display="none";
 }
 
 // Fonction pour récupérer l'id du produit dans l'url 

@@ -12,7 +12,6 @@ async function main() {
     displayEndOfOrder();
 } 
 
-
 // Fonction pour masquer la popup A propos du footer
 function closePopupAbout(){
     document.getElementById("popupAbout").style.display="none";

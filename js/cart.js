@@ -54,6 +54,10 @@ if(cartProduct === null || cartProduct == 0) {
             localStorage.setItem("cart", JSON.stringify(cartProduct));
             // Annulation de l'affichage de l'article supprimé par l'utilsateur sans avoir besoin de raffraichir la page
             productToPurchase.style.display='none';
+            if(cartProduct === null || cartProduct == 0){
+                localStorage.clear();
+                location.reload();
+            }
         });
         
         // Création d'une icone croix dans le bouton supprimer
@@ -96,6 +100,8 @@ if(cartProduct === null || cartProduct == 0) {
             // Annulation de l'affichage de l'article supprimé par l'utilsateur
                 productToPurchase.style.display='none';
                 cartTotalPrice.style.display='none';
+                localStorage.clear();
+                location.reload();
                 displayEmptyCartMsg();
                 
             // Si quantité actuelle > 1, mettre à jour la quantité dans le panier et le localStorage

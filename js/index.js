@@ -1,18 +1,11 @@
 main() // Main function, dès le chargement de la page 
 async function main() {
-    closePopupAbout();
     const products = await getProducts(); //Etape 1 : récupérer les données des produits 
 
     for (product of products) { //Etape 2 : afficher autant de produits qu'il y en a dans l'API (avec une boucle)
         displayProduct(product); 
     }
 }
-
-// Fonction pour masquer la popup A propos du footer
-function closePopupAbout(){
-    document.getElementById("popupAbout").style.display="none";
-}
-
 
 // Fonction pour récupérer les produits
 function getProducts() {
@@ -63,5 +56,4 @@ function displayProduct(product) {
     // Ajout de contenu texte selon données récupérées 
     productName.textContent = product.name
     productPrice.textContent = product.price/100 + ".00€" 
-
 }
