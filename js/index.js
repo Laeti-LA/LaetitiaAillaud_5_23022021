@@ -1,8 +1,9 @@
 main() // Main function, dès le chargement de la page 
 async function main() {
-    const products = await getProducts(); //Etape 1 : récupérer les données des produits 
-
-    for (product of products) { //Etape 2 : afficher autant de produits qu'il y en a dans l'API (avec une boucle)
+    //Etape 1 : récupérer les données des produits
+    const products = await getProducts();  
+    //Etape 2 : afficher autant de produits qu'il y en a dans l'API (avec une boucle)
+    for (product of products) { 
         displayProduct(product); 
     }
 }

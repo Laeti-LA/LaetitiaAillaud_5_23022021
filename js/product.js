@@ -102,7 +102,7 @@ function displayProductInfo(productData) {
         const popUpProductAddedToCart = () => {
             document.getElementById("popupContainer").style.display = "flex";
             document.getElementById("closePopup_icone").addEventListener('click', () => {
-                document.getElementById("popupContainer").style.display = "none";
+                closePopupContainer();
             })
         }
         // Si panier vide  

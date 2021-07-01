@@ -4,35 +4,18 @@ async function main() {
     let cartProduct = JSON.parse(localStorage.getItem("cart"));
     // Etape 2 : afficher les éléments sur la page
     displayCartElements(cartProduct);
-    closePopupAbout();
 } 
 
 
 // _______________________ AFFICHAGE DE LA PAGE PANIER _______________________
 
-// Fonction pour masquer la popup A propos du footer
-function closePopupAbout(){
-    document.getElementById("popupAbout").style.display="none";
-}
-
 function displayCartElements(cartProduct){
     // Si le panier est vide, affichage d'un message 
 if(cartProduct === null || cartProduct == 0) {
-    // Message panier vide 
-    const emptyCart = document.createElement("h2");
-    emptyCart.textContent = "Votre panier est vide.";
-    emptyCart.className = "cart__title";
-    document.getElementById("cartContent").appendChild(emptyCart);
-
-    // Bouton retour accueil
-    const linkBtn = document.createElement("a");
-    linkBtn.href = "../index.html";
-    document.getElementById("cart__mainContainer").appendChild(linkBtn); 
-
-    const addToCartBtn = document.createElement("button");
-    addToCartBtn.textContent = "Continuer mon shopping";
-    addToCartBtn.className = "cta__btn";
-    linkBtn.appendChild(addToCartBtn); 
+    // Affichage d'un message "votre panier est vide" 
+    displayEmptyCartMsg();
+    // Affichage d'un bouton de retour à l'accueil "je continue mon shopping"
+    displayContinueShoppingBtn();
 }else{
     // Si le panier n'est pas vide, affichage image, nom, qté et prix pour chaque article du localStorage
     for (let i = 0; i<cartProduct.length; i++) {
@@ -169,44 +152,8 @@ if(cartProduct === null || cartProduct == 0) {
     cartCtaBtn.addEventListener('click', event => {
         event.preventDefault();
         // Créer/Afficher section 2 formulaire 
-        cartCtaBtn.style.display = "none";
-        let formTitle = document.createElement("h2");
-        formTitle.className = "formContent__title";
-        formTitle.textContent = "Vos coordonnées"; 
-        document.getElementById("formContent").appendChild(formTitle);
-
-        // ------------------------------ Formulaire contact ------------------------------
-        let orderForm = document.createElement("form");
-        orderForm.className = "order__form";
-        orderForm.innerHTML = `
-            <form class="order__form" id="order__form">
-                <div class="orderForm orderForm--firstName">
-                    <label class="formLabel formLabel--firstName">Prénom</label>
-                    <input class="formInput formInput--firstName" type="text" id="firstName" name="firstName" required>
-                </div>
-                <div class="orderForm orderForm--lastName">
-                    <label class="formLabel formLabel--lastName">Nom</label>
-                    <input class="formInput formInput--lastName" type="text" id="lastName" name="lastName" required>
-                </div>
-                <div class="orderForm orderForm--address">
-                    <label class="formLabel formLabel--address">Adresse</label>
-                    <input class="formInput formInput--address" type="text" id="address" name="address" required>
-                </div>
-                <div class="orderForm  orderForm--zipCode">
-                    <label class="formLabel formLabel--zipCode">Code postal</label>
-                    <input class="formInput formInput--zipCode" type="number" id="zipCode" name="zipCode">
-                </div>
-                <div class="orderForm orderForm--city">
-                    <label class="formLabel formLabel--city">Ville</label>
-                    <input class="formInput formInput--city" type="text" id="city" name="city" required>
-                </div>
-                <div class="orderForm orderForm--email">
-                    <label class="formLabel formLabel--email">Email</label>
-                    <input class="formInput formInput--email" type="email" id="email" name="email" required>
-                </div>
-            </form>
-        `;
-        document.getElementById("formContent").appendChild(orderForm);
+        cartCtaBtn.style.display = "none"; 
+        displayForm();
 
         // --------------------- VERIFICATION DES DONNEES DU FORMULAIRE --------------------- 
 
@@ -338,8 +285,6 @@ if(cartProduct === null || cartProduct == 0) {
                 return false;
             }
         }
-        
-
         // ------------------- Fin vérification des données du formulaire ------------------- 
 
 
@@ -396,20 +341,80 @@ if(cartProduct === null || cartProduct == 0) {
                     })
             // Si champs du formulaire mal remplis : 
             }else{
-                document.getElementById("formPopupContainer").style.display='flex';
-                let closePopup = document.getElementById("closeFormPopup_icone");
-                closePopup.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    document.getElementById("formPopupContainer").style.display='none';
-                })
+                displayAlertFormMsg();
             }
-
         }) // --------------- Fin AddEventListener du bouton valider commande -------------
     })
 
 }
 }
 
+// Fonction pour afficher un message "panier vide"
+function displayEmptyCartMsg(){
+    const emptyCart = document.createElement("h2");
+    emptyCart.textContent = "Votre panier est vide.";
+    emptyCart.className = "cart__title";
+    document.getElementById("cartContent").appendChild(emptyCart);
+}
 
+// Fonction pour créer et afficher un bouton "continuer mon shopping" lorsque le panier est vide
+function displayContinueShoppingBtn(){
+    const linkBtn = document.createElement("a");
+    linkBtn.href = "../index.html";
+    document.getElementById("cart__mainContainer").appendChild(linkBtn); 
+    const addToCartBtn = document.createElement("button");
+    addToCartBtn.textContent = "Continuer mon shopping";
+    addToCartBtn.className = "cta__btn";
+    linkBtn.appendChild(addToCartBtn); 
+}
 
+// Fonction pour afficher un message d'erreur lorsque les champs du formulaire ne sont pas correctement remplis
+function displayAlertFormMsg(){
+    document.getElementById("formPopupContainer").style.display='flex';
+    let closePopup = document.getElementById("closeFormPopup_icone");
+    closePopup.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.getElementById("formPopupContainer").style.display='none';
+    })
+}
 
+// Fonction pour afficher le formulaire de commande 
+function displayForm(){
+    let formTitle = document.createElement("h2");
+        formTitle.className = "formContent__title";
+        formTitle.textContent = "Vos coordonnées"; 
+        document.getElementById("formContent").appendChild(formTitle);
+
+        // ------------------------------ Formulaire contact ------------------------------
+        let orderForm = document.createElement("form");
+        orderForm.className = "order__form";
+        orderForm.innerHTML = `
+            <form class="order__form" id="order__form">
+                <div class="orderForm orderForm--firstName">
+                    <label class="formLabel formLabel--firstName">Prénom</label>
+                    <input class="formInput formInput--firstName" type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="orderForm orderForm--lastName">
+                    <label class="formLabel formLabel--lastName">Nom</label>
+                    <input class="formInput formInput--lastName" type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="orderForm orderForm--address">
+                    <label class="formLabel formLabel--address">Adresse</label>
+                    <input class="formInput formInput--address" type="text" id="address" name="address" required>
+                </div>
+                <div class="orderForm  orderForm--zipCode">
+                    <label class="formLabel formLabel--zipCode">Code postal</label>
+                    <input class="formInput formInput--zipCode" type="number" id="zipCode" name="zipCode">
+                </div>
+                <div class="orderForm orderForm--city">
+                    <label class="formLabel formLabel--city">Ville</label>
+                    <input class="formInput formInput--city" type="text" id="city" name="city" required>
+                </div>
+                <div class="orderForm orderForm--email">
+                    <label class="formLabel formLabel--email">Email</label>
+                    <input class="formInput formInput--email" type="email" id="email" name="email" required>
+                </div>
+            </form>
+        `;
+        document.getElementById("formContent").appendChild(orderForm);
+}
