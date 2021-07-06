@@ -1,11 +1,11 @@
 main() // Main function, dès le chargement de la page 
 async function main() {
     let cartProduct = JSON.parse(localStorage.getItem("cart"));
-    displayCartProductsNb(cartProduct);
+    calculateCartProductsNb(cartProduct);
 }
 
 // Affichage du nombre d'articles dans le panier
-function displayCartProductsNb(cartProduct){
+function calculateCartProductsNb(cartProduct){
     let orderQty = 0;
     if(cartProduct === null || cartProduct == 0){
         orderQty = 0;

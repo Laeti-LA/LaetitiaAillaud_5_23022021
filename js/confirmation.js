@@ -7,9 +7,10 @@ async function main() {
     // Etape 2 : afficher les infos de la commande 
     displayOrderContact(contactOrder);
     displayOrderId(idOrder);
+    calculateOrderPrice();
     displayOrderProducts();
     displayDeliveryDetails(contactOrder);
-    displayEndOfOrder();
+    terminateOrder();
 } 
 
 // Fonction pour masquer la popup A propos du footer
@@ -17,20 +18,23 @@ function closePopupAbout(){
     document.getElementById("popupAbout").style.display="none";
 }
 
+// Fonction pour récupérer l'id de la commande dans l'url de la page
 function getOrderId() {
     return new URL(window.location.href).searchParams.get('orderId');
 }
 
+// Fonction pour afficher les nom et prénom de l'auteur de la commande dans le message de remerciement 
 function displayOrderContact(contactOrder) {
     document.getElementById("fistNameContent").textContent = contactOrder.firstName;
     document.getElementById("lastNameContent").textContent = " " + contactOrder.lastName;
 }
 
+// Fonction pour afficher l'id de la commande dans le message de remerciement 
 function displayOrderId(idOrder) {
     document.getElementById("orderIdContent").textContent = idOrder;
-    
 }
 
+// Fonction pour afficher les produits commandés dans le récapitulatif de la commande 
 function displayOrderProducts() {
     // Pour connaitre les quantités pour chaque produit (et calculer/afficher le prix total)
     let orderProducts = JSON.parse(localStorage.getItem("cart"));
@@ -67,7 +71,11 @@ function displayOrderProducts() {
         PurchasedProductTotalPrice.textContent = (parseInt(orderProducts[i].product_qty) * (orderProducts[i].product_price)) + ".00€";
         purchasedProduct.appendChild(PurchasedProductTotalPrice);
     }
+}
 
+// Fonction pour calculer et afficher le montant total de la commande 
+function calculateOrderPrice(){
+    let orderProducts = JSON.parse(localStorage.getItem("cart"));
     // Calcul et affichage du prix total de la commande 
     let orderTotalPrice = 0;
     for (let m in orderProducts) {
@@ -81,6 +89,7 @@ function displayOrderProducts() {
     orderTotal2.textContent = orderTotalPrice + ".00€"; 
 }
 
+// Fonction pour afficher l'adresse de livraison dans le récapitulatif de la commande 
 function displayDeliveryDetails(contactOrder) {
     // Affichage de l'adresse de livraison 
     document.getElementById("contact__firstName").textContent = contactOrder.firstName + " ";
@@ -94,7 +103,7 @@ function clearLocalStorage(){
     localStorage.clear();
 }
 
-function displayEndOfOrder(){
+function terminateOrder(){
     let endOfOrderCta = document.getElementById("endOfOrder__btn");
     endOfOrderCta.addEventListener('click', () =>{
         clearLocalStorage();

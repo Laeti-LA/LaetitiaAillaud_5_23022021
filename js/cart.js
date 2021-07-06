@@ -1,3 +1,4 @@
+
 main() // Main function, dès le chargement de la page 
 async function main() {
     // Etape 1 : récupérer avec les données du localStorage
@@ -18,6 +19,11 @@ if(cartProduct === null || cartProduct == 0) {
     displayContinueShoppingBtn();
 }else{
     // Si le panier n'est pas vide, affichage image, nom, qté et prix pour chaque article du localStorage
+    displayFullCartElements();
+}
+
+// Fonction pour afficher la page lorsqu'il y a des articles dans le panier
+function displayFullCartElements(){
     for (let i = 0; i<cartProduct.length; i++) {
 
         // Pour chaque produit présent dans le localStorage : 
@@ -86,7 +92,6 @@ if(cartProduct === null || cartProduct == 0) {
                 localStorage.clear();
                 location.reload();
                 displayEmptyCartMsg();
-                
             // Si quantité actuelle > 1, mettre à jour la quantité dans le panier et le localStorage
             }else{
                 cartProduct[i].product_qty--;
@@ -319,7 +324,7 @@ if(cartProduct === null || cartProduct == 0) {
                     let id = product.product_id;
                     products.push(id);
                 }
-    
+
                 // Création d'un objet contenant l'objet contact + le tableau de produits 
                 const order = {
                     contact,
@@ -348,6 +353,8 @@ if(cartProduct === null || cartProduct == 0) {
 
 }
 }
+    
+
 
 // Fonction pour afficher un message "panier vide"
 function displayEmptyCartMsg(){
@@ -405,6 +412,7 @@ function displayForm(){
                 <div class="orderForm  orderForm--zipCode">
                     <label class="formLabel formLabel--zipCode">Code postal</label>
                     <input class="formInput formInput--zipCode" type="number" id="zipCode" name="zipCode">
+                    
                 </div>
                 <div class="orderForm orderForm--city">
                     <label class="formLabel formLabel--city">Ville</label>

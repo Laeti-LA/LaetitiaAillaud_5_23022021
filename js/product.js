@@ -1,18 +1,24 @@
 main() // Main function, dès le chargement de la page 
 async function main() {
     closePopupContainer();
-    const productId = getProductId(); //Etape 1 : récupérer id du produit grâce à son url
-    const productData = await getProductData(productId); //Etape 2 : récupérer les données du produit grâce à son id
-    displayProductInfo(productData); //Etape 3 : afficher les infos du produit 
-    displayProductOptions(productData); //Etape 4 : afficher les options de personnalisation du produit
+    //Etape 1 : récupérer id du produit grâce à son url
+    const productId = getProductId(); 
+    //Etape 2 : récupérer les données du produit grâce à son id
+    const productData = await getProductData(productId); 
+    //Etape 3 : afficher les infos du produit 
+    displayProductInfo(productData); 
+    //Etape 4 : afficher les options de personnalisation du produit
+    displayProductOptions(productData); 
 }
 
-// _______________________ AFFICHAGE DE LA PAGE PRODUIT _______________________
+// ______________ FERMETURE DE LA POPUP "produit ajouté au panier" ______________
 
 // Fonction pour masquer la popup produit ajouté au panier
 function closePopupContainer() {
     document.getElementById("popupContainer").style.display = "none";
 }
+
+// ______________ RECUPERATION DE L'ID ET DES DONNEES DU PRODUIT _______________
 
 // Fonction pour récupérer l'id du produit dans l'url 
 function getProductId() {
@@ -22,16 +28,17 @@ function getProductId() {
 function getProductData(productId) {
     return fetch(`http://localhost:3000/api/cameras/${productId}`)
     .then(function(httpBodyResponse) {
-        return httpBodyResponse.json()
+        return httpBodyResponse.json();
     })
     .then(function(productData){
-        return productData
+        return productData;
     })
     .catch(function(error) {
-        alert("Oups... Something went wrong")
+        alert("Oups... Something went wrong");
     })  
 }
 
+//_________________________ AFFICHAGE DE LA PAGE __________________________ 
 // Fonction pour afficher les infos du produit sur la page et dans un objet
 function displayProductInfo(productData) {
     //Titre de la page (Modèle + Nom du produit)
@@ -47,7 +54,7 @@ function displayProductInfo(productData) {
     //Description du produit
     document.getElementById("product__description").textContent = productData.description;
 
-    //_________________________ AJOUT PRODUITS AU PANIER __________________________ 
+    // ____________________ Affichage quantité, options et prix ____________________ 
     
     // Choix quantité : création d'une liste déroulante de quantité à partir d'un tableau  
     let selectQty = document.createElement("select");
@@ -70,12 +77,15 @@ function displayProductInfo(productData) {
     newPrice.className = "bold";
     newPrice.textContent = "Total : " + productData.price  / 100 + ".00€";
     document.getElementById("new__price").appendChild(newPrice);
-    
     selectQty.addEventListener('change', updateNewPrice);
+
+    // Fonction pour mettre à jour le prix affiché lorsque l'utilisateur modifie la quantité
     function updateNewPrice() {
         let qtyPrice = (parseInt(selectQty.value) * productData.price) / 100;
         newPrice.textContent = "Total : " + qtyPrice + ".00€"; 
     }
+
+    // _______________________ AJOUT PRODUITS AU PANIER  _______________________ 
 
     // Event listener du bouton "Ajouter au panier"
     const btnAddToCart = document.getElementById("btn_addToCart"); 
@@ -93,12 +103,13 @@ function displayProductInfo(productData) {
         }
         
         let cartProduct = JSON.parse(localStorage.getItem("cart"));
-        // Si des produits sont déjà présents dans le panier, tableau déjà créé et donc juste ajout (push) d'un nouvel objet productToAdd
+        // Fonction pour ajouter (push) un productToAdd au localStorage (ajouter un produit au panier)
         const addToLocalStorage = () => {
             cartProduct.push(productToAdd);
             localStorage.setItem("cart", JSON.stringify(cartProduct));
         }
 
+        // Fonction pour afficher la popup "produit ajouté au panier" lorsque l'utilisateur a cliqué sur le bouton d'ajout au panier et que l'ajout a réussi 
         const popUpProductAddedToCart = () => {
             document.getElementById("popupContainer").style.display = "flex";
             document.getElementById("closePopup_icone").addEventListener('click', () => {
