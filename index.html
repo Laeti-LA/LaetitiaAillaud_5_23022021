@@ -9,6 +9,8 @@
         <link rel="icon" type="image/png" href="images/logo-orinoco.ico"/>
         <link rel="stylesheet" href="css/style.css"/>
         <script src="js/index.js" defer></script>
+        <script src="js/utils.js" defer></script>
+        <script src="js/popupfooter.js" defer></script>
     </head>
     <body>
        <header>
@@ -22,7 +24,10 @@
                 </div>
                 <img class="logo" src="images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"/>
                 <div class="shopping-cart">
-                   <i class="cart-icon fas fa-shopping-cart"></i>
+                   <a href="pages/cart.html">
+                     <i class="cart-icon fas fa-shopping-cart"></i>
+                   </a>
+                   <p class="product__nb bold" id="product__nb"></p>
                 </div>
             </div>
        </header>
@@ -30,27 +35,41 @@
            <!-- Produits disponibles présentés sous forme de cartes cliquables -->
            <h1>Orinoco, e-commerce spécialisé</h1>
            <section class="products">
-               <h2>Découvrez notre gamme Oricamera d'appareils photo vintage.</h2>
+               <h2 class="section__title">Découvrez notre gamme Oricamera d'appareils photo vintage.</h2>
                <div id="productList" class="products-list">
-                   <template id="templateProduct">
-                       <a id="card__link">
-                            <figure class="product-card">
-                                <div>
-                                    <img id="card__img" class="card__img" src="" alt="">
-                                </div>
-                                <figcaption class="card__legend">
-                                    <h3 id="card__name" class="card__name">Name</h3>
-                                    <p id="card__price" class="card__price">Price</p>
-                                </figcaption>
-                            </figure>
-                       </a> 
-                    </template>
                </div>
            </section>
        </main>
-       <footer>
+       <footer class="footer">
            <!-- Footer identique sur toutes les pages : A propos, contact et 
             liens vers les autres sites Orinoco -->
+            <div class="footer__content">
+                <div><img class="footer__logo" src="images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"></div>
+                <nav>
+                    <ul class="footer__menu bold">
+                        <li class="footerAbout" id="footerAbout">
+                            <p class="about">A propos</p>
+                        </li>
+                        <li>
+                            <a href="mailto:contact@orinoco.com">Contactez-nous</a>
+                        </li>
+                        <li>
+                            <a href="#">Mentions légales</a>
+                        </li>
+                        <li>
+                            <a href="#">Découvrez nos autres sites</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
        </footer>
+       <div class="popup__about popupAboutContainer" id="popupAbout">
+           <div class="popup" id="popup__about">
+                <img class="about__logo" src="images/logo-orinoco.jpg" alt="Logo de la marque Orinoco">
+                <i class="fas fa-times about__icon closePopup_icone" id="aboutCloseIcon"></i>
+                <h4 class="about__title bold">A propos d'Orinoco</h4>
+                <p class="about__content">Orinoco se démarque des grands site e-commerce en proposant des applications thématiques ne vendant qu’un seul groupe de produits. Retrouvez nos sites Oribook pour les livres ou Oritextil pour les vêtements. Oricameras vous propose une sélection unique d'appareils photo vintage!</p>
+           </div>
+       </div>
     </body>
 </html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Orinoco | Camera vintage</title>
+        <meta name="description" content="Orinoco, e-commerce spécialisé">
+        <script src="https://kit.fontawesome.com/56e0717261.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" href="../images/logo-orinoco.ico"/>
+        <link rel="stylesheet" href="../css/style.css"/>
+        <script src="../js/product.js" defer></script>
+        <script src="../js/utils.js" defer></script>
+        <script src="../js/popupfooter.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <!-- Header avec logo, bouton de retour en page d'accueil à gauche 
+             (caché sur la page d'accueil) et icone panier à droite -->
+             <div class="header">
+                 <div class="return">
+                    <a href="../index.html">
+                        <i class="return-icon fas fa-arrow-left"></i>
+                    </a>
+                 </div>
+                 <img class="logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"/>
+                 <div class="shopping-cart">
+                    <a href="cart.html">
+                        <i class="cart-icon fas fa-shopping-cart"></i>
+                    </a>
+                    <p class=" bold product__nb" id="product__nb"></p>
+                 </div>
+             </div>
+        </header>
+        <main class="main-product container" id="main-product">
+            <h1 class="product__title" id="product__title">Titre</h1>
+            <section class="product-section" id="product-section">
+                <div>
+                    <img class="product__img" id="product__img">
+                </div>
+                <div class="product__container">
+                    <div class="product__details">
+                        <div class="product-top">
+                            <h2 id="product__name" class="product__name bold">Name</h2>
+                            <p id="product__price" class="bold">Price</p>
+                        </div>
+                        <p id="product__id">Id</p>
+                        <p id="product__description" class="product__description">Description</p>
+                    </div>
+                    <div class="purchase__product--options">
+                        <div class="purchase__options">
+                            <p class="bold">Options</p>
+                            <label id="product__option">
+                                <select id="product__option--selector">
+                                </select>
+                            </label>
+                        </div>
+                        <div class="purchase__options">
+                            <p class="bold">Quantité</p>
+                            <label id="product__quantity">
+                            </label>
+                        </div> 
+                        <div id="new__price">
+                        </div>
+                    </div>
+                    <div class="product__add-to-cart">
+                        <button id="btn_addToCart" class="product__button bold">Ajouter au panier</button>
+                    </div>
+                </div>
+            </section>
+            <div class="popupContainer" id="popupContainer">
+                <div class="popup" id="popup">
+                    <i class="fas fa-times closePopup_icone" id="closePopup_icone"></i>
+                    <p class="popup__title bold">Le produit a bien été ajouté au panier !</p>
+                    <div class="popup__cta">
+                        <a href="cart.html">
+                            <button class="popup__btn bold">Voir mon panier</button>
+                        </a>
+                        <a href="../index.html">
+                            <button class="popup__btn bold" id="welcomeReturn">Continuez mes achats</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        <footer>
+            <!-- Footer identique sur toutes les pages : A propos, contact et 
+             liens vers les autres sites Orinoco -->
+             <div class="footer__content">
+                <div><img class="footer__logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"></div>
+                <nav>
+                    <ul class="footer__menu bold">
+                        <li class="footerAbout" id="footerAbout">
+                            <p class="about">A propos</p>
+                        </li>
+                        <li>
+                            <a href="mailto:contact@orinoco.com">Contactez-nous</a>
+                        </li>
+                        <li>
+                            <a href="#">Mentions légales</a>
+                        </li>
+                        <li>
+                            <a href="#">Découvrez nos autres sites</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+        <div class="popup__about popupContainer" id="popupAbout">
+            <div class="popup" id="popup__about">
+                 <img class="about__logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco">
+                 <i class="fas fa-times about__icon closePopup_icone" id="aboutCloseIcon"></i>
+                 <h4 class="about__title bold">A propos d'Orinoco</h4>
+                 <p class="about__content">Orinoco se démarque des grands site e-commerce en proposant des applications thématiques ne vendant qu’un seul groupe de produits. Retrouvez nos sites Oribook pour les livres ou Oritextil pour les vêtements. Oricameras vous propose une sélection unique d'appareils photo vintage!</p>
+            </div>
+        </div>
+    </body>
+</html>

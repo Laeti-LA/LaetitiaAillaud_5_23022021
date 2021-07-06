@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Orinoco | Camera vintage</title>
+        <meta name="description" content="Orinoco, e-commerce spécialisé">
+        <script src="https://kit.fontawesome.com/56e0717261.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" href="../images/logo-orinoco.ico"/>
+        <link rel="stylesheet" href="../css/style.css"/>
+        <script src="../js/cart.js" defer></script>
+        <script src="../js/utils.js" defer></script>
+        <script src="../js/popupfooter.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <!-- Header avec logo, bouton de retour en page d'accueil à gauche 
+             (caché sur la page d'accueil) et icone panier à droite -->
+             <div class="header">
+                 <div class="return">
+                    <a href="../index.html">
+                        <i class="return-icon fas fa-arrow-left"></i>
+                    </a>
+                 </div>
+                 <img class="logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"/>
+                 <div class="shopping-cart">
+                    <a href="cart.html">
+                        <i class="cart-icon fas fa-shopping-cart"></i>
+                    </a>
+                    <p class=" bold product__nb" id="product__nb"></p>
+                 </div>
+             </div>
+        </header>
+        <main class="container cart__mainContainer" id="cart__mainContainer">
+            <h1 id="cart__title">Récapitulatif de votre panier</h1>
+            <section class="cartContent" id="cartContent">
+                <h2 id="cartProductsQty" class="cartProductsQty"></h2>
+                <div class="cart__details" id="cart__details">
+                    <ul class="cart__list" id="cart__list">
+
+                    </ul>
+                </div>
+                <div class="cart__totalPrice" id="cart__totalPrice"></div>
+                <div class="cart__ctaBtn" id="cart__ctaBtn"></div>
+            </section>
+            <section class=" container formContent" id="formContent"></section>
+            </section>
+            <div class="popupContainer formPopupContainer" id="formPopupContainer">
+                <div class="popup" id="formPopup">
+                    <i class="fas fa-times closePopup_icone" id="closeFormPopup_icone"></i>
+                    <p class="popup__title bold">Veuillez remplir tous les champs correctement!</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <!-- Footer identique sur toutes les pages : A propos, contact et 
+             liens vers les autres sites Orinoco -->
+             <div class="footer__content">
+                <div><img class="footer__logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco"></div>
+                <nav>
+                    <ul class="footer__menu bold">
+                        <li class="footerAbout" id="footerAbout">
+                            <p class="about">A propos</p>
+                        </li>
+                        <li>
+                            <a href="mailto:contact@orinoco.com">Contactez-nous</a>
+                        </li>
+                        <li>
+                            <a href="#">Mentions légales</a>
+                        </li>
+                        <li>
+                            <a href="#">Découvrez nos autres sites</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+        <div class="popup__about popupAboutContainer" id="popupAbout">
+            <div class="popup" id="popup__about">
+                 <img class="about__logo" src="../images/logo-orinoco.jpg" alt="Logo de la marque Orinoco">
+                 <i class="fas fa-times about__icon closePopup_icone" id="aboutCloseIcon"></i>
+                 <h4 class="about__title bold">A propos d'Orinoco</h4>
+                 <p class="about__content">Orinoco se démarque des grands site e-commerce en proposant des applications thématiques ne vendant qu’un seul groupe de produits. Retrouvez nos sites Oribook pour les livres ou Oritextil pour les vêtements. Oricameras vous propose une sélection unique d'appareils photo vintage!</p>
+            </div>
+        </div>
+    </body>
+</html>
