@@ -2,7 +2,7 @@ body{
     margin: 0;
 }
 
-/* Header */
+/* -------------------------------------- Header -------------------------------------- */
 .header{
     background-color: #F3E9F1;
     height: 100px;
@@ -45,7 +45,7 @@ body{
     margin-right: 30px; 
 }
 
-/* -------------------------------- FOOTER -------------------------------- */ 
+/* -------------------------------------- FOOTER -------------------------------------- */ 
 
 .footer__content{
     background-color: #F3E9F1;
@@ -132,14 +132,14 @@ i:hover{
     }
 }
 
-/* Popup footer : A propos*/
+/* Popup footer : A propos */
 .popupAboutContainer{
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -791,7 +791,7 @@ input{
     transform: scale(1.05);
 }
 
-/* ------------------ PAGE CONFIRMATION ------------------ */
+/* ---------------------------- PAGE CONFIRMATION ---------------------------- */
 
 .orderDetails{
     background-color: #F3E9F1;
