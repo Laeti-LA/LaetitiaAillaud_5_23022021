@@ -1,6 +1,11 @@
 # Orinoco #
 
-This is the back end server for Project 5 of the Junior Web Developer path.
+This is the 5th Project of the Junior Web Developer path. 
+The project aims to : 
+1. Interact with a web service with JavaScript 
+2. Manage JavaScript events 
+3. Validate data from external sources 
+4. Create a test plan for an application 
 
 ### Prerequisites ###
 
