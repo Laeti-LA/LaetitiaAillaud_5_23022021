@@ -46,6 +46,8 @@ function displayCartElements(cartProduct){
                 if(cartProduct === null || cartProduct == 0){
                     localStorage.clear();
                     location.reload();
+                }else{
+                    location.reload();
                 }
             });
             
