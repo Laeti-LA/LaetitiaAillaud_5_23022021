@@ -3,6 +3,7 @@ main() // Main function, dès le chargement de la page
 async function main() {
     // Etape 1 : récupérer avec les données du localStorage
     let cartProduct = JSON.parse(localStorage.getItem("cart"));
+    console.log(cartProduct);
     // Etape 2 : afficher les éléments sur la page
     displayCartElements(cartProduct);
 } 
@@ -317,7 +318,7 @@ function displayCartElements(cartProduct){
                     };
         
                     // Ajout objet contact au localStorage 
-                    localStorage.setItem("contact", JSON.stringify(contact));
+                    localStorage.setItem("orderContact", JSON.stringify(contact));
         
                     // Création d'un tableau avec les id des produits du panier 
                     let products = [];
@@ -341,6 +342,9 @@ function displayCartElements(cartProduct){
                     })
                         .then((response) => response.json())
                         .then((json) => {
+                            let previousOrder = JSON.parse(localStorage.getItem("cart"));
+                            localStorage.setItem("previousCart", JSON.stringify(previousOrder));
+                            localStorage.removeItem("cart");
                             window.location.href = `confirmation.html?orderId=${json.orderId}`;
                         })
                         .catch(() => {

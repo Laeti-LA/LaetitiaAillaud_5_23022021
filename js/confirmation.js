@@ -2,13 +2,15 @@ main() // Main function, dès le chargement de la page
 async function main() {
     closePopupAbout();
     // Etape 1 : récupérer les données de la commande  
-    const contactOrder = JSON.parse(localStorage.getItem("contact"));
+    const contactOrder = JSON.parse(localStorage.getItem("orderContact"));
     const idOrder = getOrderId();
+    // Pour connaitre les quantités pour chaque produit (et calculer/afficher le prix total)
+    let orderProducts = JSON.parse(localStorage.getItem("previousCart"));
     // Etape 2 : afficher les infos de la commande 
     displayOrderContact(contactOrder);
     displayOrderId(idOrder);
-    calculateOrderPrice();
-    displayOrderProducts();
+    calculateOrderPrice(orderProducts);
+    displayOrderProducts(orderProducts);
     displayDeliveryDetails(contactOrder);
     terminateOrder();
 } 
@@ -35,9 +37,7 @@ function displayOrderId(idOrder) {
 }
 
 // Fonction pour afficher les produits commandés dans le récapitulatif de la commande 
-function displayOrderProducts() {
-    // Pour connaitre les quantités pour chaque produit (et calculer/afficher le prix total)
-    let orderProducts = JSON.parse(localStorage.getItem("cart"));
+function displayOrderProducts(orderProducts) {
     // Affichage des produits achetés 
     for (let i = 0; i<orderProducts.length; i++) {
 
@@ -74,8 +74,7 @@ function displayOrderProducts() {
 }
 
 // Fonction pour calculer et afficher le montant total de la commande 
-function calculateOrderPrice(){
-    let orderProducts = JSON.parse(localStorage.getItem("cart"));
+function calculateOrderPrice(orderProducts){
     // Calcul et affichage du prix total de la commande 
     let orderTotalPrice = 0;
     for (let m in orderProducts) {

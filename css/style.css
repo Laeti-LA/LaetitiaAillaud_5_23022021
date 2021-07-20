@@ -267,10 +267,14 @@ button{
     border: none;
 }
 
-/* PAGE PRODUIT */ 
+/* ------------------- PAGE PRODUIT ------------------- */ 
 
 .bold{
     font-weight: bold;
+}
+
+.main-product{
+    display: flex;
 }
 
 /* Disposition image et description */

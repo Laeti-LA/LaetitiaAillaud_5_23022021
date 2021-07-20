@@ -24,6 +24,7 @@ function closePopupContainer() {
 function getProductId() {
     return new URL(window.location.href).searchParams.get('id');
 }
+
 // Fonction pour récupérer les données des produits 
 function getProductData(productId) {
     return fetch(`http://localhost:3000/api/cameras/${productId}`)
@@ -35,10 +36,21 @@ function getProductData(productId) {
     })
     .catch(function(error) {
         alert("Oups... Something went wrong");
+        errorMsg();
     })  
 }
 
 //_________________________ AFFICHAGE DE LA PAGE __________________________ 
+
+// En cas d'erreur 
+function errorMsg(){
+    getElementById("main-product").style.display='none';
+    let errorMsg = createElement('h1');
+    errorMsg.className = "errorMsg";
+    errorMsg.textContent = "Une erreur est survenue";
+    getElementById("main-product").appendChild(errorMsg);
+}
+
 // Fonction pour afficher les infos du produit sur la page et dans un objet
 function displayProductInfo(productData) {
     //Titre de la page (Modèle + Nom du produit)
