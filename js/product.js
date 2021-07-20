@@ -26,6 +26,7 @@ function getProductData(productId) {
     return fetch(`http://localhost:3000/api/cameras/${productId}`)
     .then(function(httpBodyResponse) {
         if(httpBodyResponse.ok){
+            // Si produit trouvé : 
             return httpBodyResponse.json()
             .then(function(productData){
                 return productData
@@ -35,10 +36,11 @@ function getProductData(productId) {
                 displayProductOptions(productData);
               })
         }else{
-            throw new Error('Something went wrong');
+            // Si produit non trouvé : Masquage de la section produit et affaiche d'un message d'erreur
+            document.getElementById("product-section").style.display='none';
+            document.getElementById("product__title").textContent= "Oups... Ce produit n'existe pas.";
         }
     })
-    
     .catch(function(error) {
         alert("Oups... Something went wrong");
     })  
@@ -51,7 +53,7 @@ function getProductData(productId) {
 
 // Fonction pour afficher les infos du produit sur la page et dans un objet
 function displayProductInfo(productData) {
-    document.getElementById("main-product").style.display='flex';
+    document.getElementById("product-section").style.display='flex';
     //Titre de la page (Modèle + Nom du produit)
     document.getElementById("product__title").textContent = "Modèle " + productData.name;
     //Référence du produit

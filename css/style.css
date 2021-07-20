@@ -274,12 +274,12 @@ button{
 }
 
 .main-product{
-    display: none;
+    display: flex;
 }
 
 /* Disposition image et description */
 .product-section{
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
