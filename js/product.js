@@ -5,10 +5,6 @@ async function main() {
     const productId = getProductId(); 
     //Etape 2 : récupérer les données du produit grâce à son id
     const productData = await getProductData(productId); 
-    //Etape 3 : afficher les infos du produit 
-    displayProductInfo(productData); 
-    //Etape 4 : afficher les options de personnalisation du produit
-    displayProductOptions(productData); 
 }
 
 // ______________ FERMETURE DE LA POPUP "produit ajouté au panier" ______________
@@ -29,30 +25,33 @@ function getProductId() {
 function getProductData(productId) {
     return fetch(`http://localhost:3000/api/cameras/${productId}`)
     .then(function(httpBodyResponse) {
-        return httpBodyResponse.json();
+        if(httpBodyResponse.ok){
+            return httpBodyResponse.json()
+            .then(function(productData){
+                return productData
+            })
+            .then((productData) => {
+                displayProductInfo(productData);
+                displayProductOptions(productData);
+              })
+        }else{
+            throw new Error('Something went wrong');
+        }
     })
-    .then(function(productData){
-        return productData;
-    })
+    
     .catch(function(error) {
         alert("Oups... Something went wrong");
-        errorMsg();
     })  
 }
 
 //_________________________ AFFICHAGE DE LA PAGE __________________________ 
 
-// En cas d'erreur 
-function errorMsg(){
-    getElementById("main-product").style.display='none';
-    let errorMsg = createElement('h1');
-    errorMsg.className = "errorMsg";
-    errorMsg.textContent = "Une erreur est survenue";
-    getElementById("main-product").appendChild(errorMsg);
-}
+
+
 
 // Fonction pour afficher les infos du produit sur la page et dans un objet
 function displayProductInfo(productData) {
+    document.getElementById("main-product").style.display='flex';
     //Titre de la page (Modèle + Nom du produit)
     document.getElementById("product__title").textContent = "Modèle " + productData.name;
     //Référence du produit

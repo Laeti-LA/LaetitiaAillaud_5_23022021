@@ -274,7 +274,7 @@ button{
 }
 
 .main-product{
-    display: flex;
+    display: none;
 }
 
 /* Disposition image et description */

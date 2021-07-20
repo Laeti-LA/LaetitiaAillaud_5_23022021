@@ -3,7 +3,6 @@ main() // Main function, dès le chargement de la page
 async function main() {
     // Etape 1 : récupérer avec les données du localStorage
     let cartProduct = JSON.parse(localStorage.getItem("cart"));
-    console.log(cartProduct);
     // Etape 2 : afficher les éléments sur la page
     displayCartElements(cartProduct);
 } 
